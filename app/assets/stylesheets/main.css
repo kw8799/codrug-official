@@ -37,10 +37,12 @@
 /*====================
 ======Typography=====
 ======================*/
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
+@import url(https://fonts.googleapis.com/earlyaccess/cwtexhei.css);
+@import url(https://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url(https://fonts.googleapis.com/css?family=jejugothic:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
 
 body {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'jejugothic', sans-serif;
 	position: relative;
 	font-weight:400;
 	background: #fff;
@@ -66,11 +68,11 @@ a {
 	-moz-transition: 300ms;
 	-o-transition: 300ms;
 	transition: 300ms;
-	color:#fc7700;
+	color:#006B31;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'jejugothic', sans-serif;
 }
 
 .slider-btn {
@@ -277,7 +279,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #navigation .navbar-nav.navbar-right li a {
 	color: #43484E;
-	font-family: 'Roboto',sans-serif;
+	font-family: 'jejugothic',sans-serif;
 	font-size: 14px;
 	padding: 0;
 	text-transform: uppercase;
@@ -366,7 +368,7 @@ h1, h2, h3, h4, h5, h6 {
 	color: #f6f6f6;
 	text-shadow: 2px 2px 4px #000000 !important;
 	display: inline-block;
-	font-family: roboto;
+	font-family: jejugothic;
 	font-size: 55px;
 	font-weight: 800;
 	margin-bottom: 40px;
@@ -380,7 +382,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #main-carousel .carousel-inner p {
 	color: #f6f6f6;
-	font-family: roboto;
+	font-family: jejugothic;
 	font-size: 24px;
 	font-weight: 300;
 	margin-bottom: 59px;
@@ -925,7 +927,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .mask h4 {
 	color:#000;
-	font-family: roboto;
+	font-family: jejugothic;
 	font-size: 14px;
 	font-weight: 200;
 	padding: 0 35px 5px;
@@ -1029,7 +1031,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .clients h2 {
 	color: #FFFFFF;
-	font-family: 'Roboto',sans-serif;
+	font-family: 'jejugothic',sans-serif;
 	font-size: 30px;
 	font-weight: 500;
 	line-height: 40px;
@@ -1039,7 +1041,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .clients p {
 	color: #FFFFFF;
-	font-family: 'Roboto',sans-serif;
+	font-family: 'jejugothic',sans-serif;
 	font-size: 14px;
 	font-weight: 300;
 	letter-spacing: 3px;
@@ -1336,7 +1338,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #footer a {
-	color:#fc7700
+	color:#006B31
 }
 
 
