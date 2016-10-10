@@ -42,7 +42,7 @@
 @import url(https://fonts.googleapis.com/css?family=jejugothic:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
 
 body {
-	font-family: 'jejugothic', sans-serif;
+	font-family: 'Jeju Gothic', sans-serif;
 	position: relative;
 	font-weight:400;
 	background: #fff;
@@ -72,7 +72,7 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'jejugothic', sans-serif;
+	font-family: 'Jeju Gothic', sans-serif;
 }
 
 .slider-btn {
@@ -279,7 +279,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #navigation .navbar-nav.navbar-right li a {
 	color: #43484E;
-	font-family: 'jejugothic',sans-serif;
+	font-family: 'Jeju Gothic',sans-serif;
 	font-size: 14px;
 	padding: 0;
 	text-transform: uppercase;
@@ -368,7 +368,7 @@ h1, h2, h3, h4, h5, h6 {
 	color: #f6f6f6;
 	text-shadow: 2px 2px 4px #000000 !important;
 	display: inline-block;
-	font-family: jejugothic;
+	font-family: 'Jeju Gothic';
 	font-size: 55px;
 	font-weight: 800;
 	margin-bottom: 40px;
@@ -382,7 +382,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #main-carousel .carousel-inner p {
 	color: #f6f6f6;
-	font-family: jejugothic;
+	font-family: 'Jeju Gothic';
 	font-size: 24px;
 	font-weight: 300;
 	margin-bottom: 59px;
@@ -927,7 +927,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .mask h4 {
 	color:#000;
-	font-family: jejugothic;
+	font-family: 'Jeju Gothic';
 	font-size: 14px;
 	font-weight: 200;
 	padding: 0 35px 5px;
@@ -1031,7 +1031,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .clients h2 {
 	color: #FFFFFF;
-	font-family: 'jejugothic',sans-serif;
+	font-family: 'Jeju Gothic',sans-serif;
 	font-size: 30px;
 	font-weight: 500;
 	line-height: 40px;
@@ -1041,7 +1041,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .clients p {
 	color: #FFFFFF;
-	font-family: 'jejugothic',sans-serif;
+	font-family: 'Jeju Gothic',sans-serif;
 	font-size: 14px;
 	font-weight: 300;
 	letter-spacing: 3px;
