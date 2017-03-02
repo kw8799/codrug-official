@@ -98,7 +98,7 @@
 							<a class="btn btn-default slider-btn animated bounceIn <%= @home_active.ani_button %>">
 								<input type="text" name="hbutton" style="width:150px; height:45px; text-align:center;" value="<%= @home_active.button %>"><br>
         			</a><br>
-        			<select id="linkSelect" name="hlink">
+        			<select id="linkSelect<%= @home_active.id %>" name="hlink">
 				        <option value="">::링크선택::</option>
 				        <option value="#navigator"><%= @navigator.navi_name1 %></option>
 				        <option value="#about-us"><%= @navigator.navi_name2 %></option>
@@ -108,8 +108,23 @@
 				        <option value="#clients"><%= @navigator.navi_name6 %></option>
 				        <option value="#blog"><%= @navigator.navi_name7 %></option>
 				        <option value="#contact"><%= @navigator.navi_name8 %></option>
-				        <option value="">직접입력 준비중...</option>
+				        <option value="">직접입력</option>
 					    </select><br>
+					    
+					    <input type="text" name="hlink" id="createlink<%= @home_active.id %>" style="width:190px" placeholder="직접입력 이외에 건드리지 말 것"><br>
+					    
+					    	<script>
+								function displayVals() {
+								  var singleValues = $( "#linkSelect<%= @home_active.id%>" ).val();
+								  // When using jQuery 3:
+								  // var multipleValues = $( "#multiple" ).val();
+								  $( "#createlink<%= @home_active.id%>" ).val( singleValues );
+								}
+								 
+								$( "select" ).change( displayVals );
+								displayVals();
+								</script>
+
         				<input type="radio" name="bani" value="bounceInLeft">오른쪽에서 왼쪽으로
 				        <input type="radio" name="bani" value="bounceInRight">왼쪽으로 오른쪽으로
 				        <input type="radio" name="bani" value="bounceInUp">아래에서 위로
@@ -150,7 +165,7 @@
 							<a class="btn btn-default slider-btn animated bounceIn <%= h.ani_button %>">
 								<input type="text" name="hbutton" style="width:150px; height:45px; text-align:center;" value="<%= h.button %>"><br>
         			</a><br>
-        			<select id="linkSelect" name="hlink">
+        			<select id="linkSelect<%= h.id %>">
 				        <option value="">::링크선택::</option>
 				        <option value="#navigator"><%= @navigator.navi_name1 %></option>
 				        <option value="#about-us"><%= @navigator.navi_name2 %></option>
@@ -160,8 +175,22 @@
 				        <option value="#clients"><%= @navigator.navi_name6 %></option>
 				        <option value="#blog"><%= @navigator.navi_name7 %></option>
 				        <option value="#contact"><%= @navigator.navi_name8 %></option>
-				        <option value="">직접입력 준비중...</option>
+				        <option value="직접입력하세요">직접입력</option>
 					    </select><br>
+					    <input type="text" name="hlink" id="createlink<%= h.id %>" style="width:190px" placeholder="직접입력 이외에 건드리지 말 것"><br>
+					    
+					    	<script>
+								function displayVals() {
+								  var singleValues = $( "#linkSelect<%= h.id%>" ).val();
+								  // When using jQuery 3:
+								  // var multipleValues = $( "#multiple" ).val();
+								  $( "#createlink<%= h.id%>" ).val( singleValues );
+								}
+								 
+								$( "select" ).change( displayVals );
+								displayVals();
+								</script>
+								
         				<input type="radio" name="bani" value="bounceInLeft">오른쪽에서 왼쪽으로
 				        <input type="radio" name="bani" value="bounceInRight">왼쪽으로 오른쪽으로
 				        <input type="radio" name="bani" value="bounceInUp">아래에서 위로
@@ -205,7 +234,7 @@
 
 <section id="about-us">
 	<div class="container">
-		<form action="/admin/about_updt" method="post" enctype="multipart/form-data">> 
+		<form action="/admin/about_updt" method="post" enctype="multipart/form-data">
 		<div class="text-center">
 			<div class="col-sm-8 col-sm-offset-2">
 				<h2 class="title-one"> <input type="text" name="titleSec" style="text-align:center;" value="<%= Section.find(1).section_title %>"></h2>
@@ -315,7 +344,7 @@
 											<input type="text" name="contentSvc<%= t.id %>" style="width:300px; text-align:center;" value="<%= t.svc_content %>"><br>
 											<input type="text" name="linkSvc<%= t.id %>" style="width:300px; text-align:center;" value="<%= t.svc_link %>">
 											<input type="file" name="urlPic<%= t.id %>" value="<%= t.pic_url %>">
-											사진 파일은 정사각 형태여야 합니다.
+											사진 파일은 1:1비율이어야 하며 각 서비스의 사진 크기가 동일해야 함.
 										</p>
 									</div>
 							</div>
@@ -375,6 +404,7 @@
 								<div class="single-member">
 									<img src="<%= t.img_url %>" alt="team member"/>
 									<input type="file" name="faceImgUrl<%= t.id %>" value="<%= t.img_url %>"><br>
+									프로필 이미지는 1:1비율 편집 후 올려주세요.
 									<h4><input type="text" name="memberName<%= t.id %>" style="text-align:center;" value="<%= t.name %>"></h4>
 									<h5><input type="text" name="memberMajor<%= t.id %>" style="text-align:center;" value="<%= t.major %>"></h5>
 									<p><textarea rows="3" cols="25" style="text-align:center;" name="memberSaying<%= t.id %>"><%= t.saying %></textarea></p>
@@ -955,3 +985,4 @@
 		// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
 		// marker.setMap(null);    
 	</script>
+	

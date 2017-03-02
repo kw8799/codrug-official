@@ -174,15 +174,8 @@ class AdminController < ApplicationController
     def services_updt
         t = Section.find(2)
         
-        bg_uploader = BackgroundUploader.new
-        bg_uploader.store!(params[:backgroundSec])
-        bg_image = bg_uploader.url
-        
         t.section_title = params[:titleSec]
         t.section_content = params[:contentSec]
-        if bg_image != nil
-            t.section_background = bg_image
-        end
         t.save
         
         u = Service.all
@@ -213,10 +206,15 @@ class AdminController < ApplicationController
         u = Ourteam.all
         u.each do |o|
             o = Ourteam.find(o.id)
+            
+            uploader = T34Uploader.new
+            uploader.store!(params["faceImgUrl#{o.id}"])
+            ot_image = uploader.url
+            
             o.name = params["memberName#{o.id}"]
             o.major = params["memberMajor#{o.id}"]
             o.saying = params["memberSaying#{o.id}"]
-            o.img_url = params["faceImgUrl#{o.id}"]
+            o.img_url = ot_image
             o.save
         end
         redirect_to "/admin/index1"
