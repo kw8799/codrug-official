@@ -6,7 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Admin.create(admin_id:'kw8799', admin_pw:'12345')
 Navigator.create(navi_name1:'홈', navi_name2:'소개', navi_name3:'서비스', 
                  navi_name4:'인터뷰', navi_name5:'미정', navi_name6:'미정', 
                  navi_name7:'미정', navi_name8:'만나는법')
