@@ -1,3 +1,4 @@
+<!--접속 전 나오는 로딩화면-->
 <div class="preloader">
 		<div class="preloder-wrap">
 			<div class="preloder-inner"> 
@@ -11,6 +12,8 @@
 			</div>
 		</div>
 	</div><!--/.preloader-->
+
+	<!--상단 헤더 네비게이터-->
 	<header id="navigation"> 
 		<div class="navbar navbar-inverse navbar-fixed-top" role="banner"> 
 			<div class="container"> 
@@ -22,14 +25,14 @@
 				</div> 
 				<div class="collapse navbar-collapse"> 
 					<ul class="nav navbar-nav navbar-right"> 
-						<li class="scroll active"><a href="#navigation">홈</a></li> 
-						<li class="scroll"><a href="#about-us">소개</a></li> 
-						<li class="scroll"><a href="#services">서비스</a></li> 
-						<li class="scroll"><a href="#our-team">인터뷰</a></li> 
-						<!--<li class="scroll"><a href="#portfolio">프레스</a></li> -->
-						<!--<li class="scroll"><a href="#clients">Clients</a></li> -->
-						<!--<li class="scroll"><a href="#blog">Blog</a></li> -->
-						<li class="scroll"><a href="#contact">만나는법</a></li>
+						<li class="scroll active"><a href="#navigation"><%= @menu.navi_name1 %></a></li> 
+						<li class="scroll"><a href="#about-us"><%= @menu.navi_name2 %></a></li> 
+						<li class="scroll"><a href="#services"><%= @menu.navi_name3 %></a></li> 
+						<li class="scroll"><a href="#our-team"><%= @menu.navi_name4 %></a></li>
+						<!--<li class="scroll"><a href="#portfolio"><%= @menu.navi_name5 %></a></li> -->
+						<!--<li class="scroll"><a href="#clients"><%= @menu.navi_name6 %></a></li> -->
+						<!--<li class="scroll"><a href="#blog"><%= @menu.navi_name7 %></a></li> -->
+						<li class="scroll"><a href="#contact"><%= @menu.navi_name8 %></a></li>
 						<!--<li class="scroll"><a class="btn btn-default slider-btn-inHeader animated" href="https://docs.google.com/forms/d/e/1FAIpQLSf2GkYUN9nr_jmWdL4fHi9g9JXkgAO4DiLdYFXFQTk2Npe4gg/viewform" style="font-weight: bold; margin-left:5px; background-color:#006B31; color:white; width: 80px; height: 32px; padding-left: 0px; padding-right: 0px; border-color: #006B31 !important;" align="center">4기 지원</a></li>-->
 					</ul> 
 				</div> 
@@ -37,51 +40,56 @@
 		</div><!--/navbar--> 
 	</header> <!--/#navigation--> 
 
+	<!--좌우슬라이드 화면(홈)-->
 	<section id="home">
 		<div class="home-pattern"></div>
 		<div id="main-carousel" class="carousel slide" data-ride="carousel"> 
 			<ol class="carousel-indicators">
-				<li data-target="#main-carousel" data-slide-to="0" class="active"></li>
-				<li data-target="#main-carousel" data-slide-to="1"></li>
-				<li data-target="#main-carousel" data-slide-to="2"></li>
-				<li data-target="#main-carousel" data-slide-to="3"></li>
+				<li data-target="#main-carousel" data-slide-to="<%= @home_active.id %>" class="active"></li>
+				<% @home.each do |ho| %>
+				<li data-target="#main-carousel" data-slide-to="<%= ho.id %>" class=""></li>
+				<% end %>
 			</ol><!--/.carousel-indicators--> 
 			<div class="carousel-inner">
-				<div class="item active" style="background-image: url(/assets/slider/slider4.jpg)"> 
-				<div class="carousel-caption"> 
-					<div> 
-						<h2 class="heading animated bounceInDown">코드러그 4기 지원해주셔서 감사합니다!</h2> 
-						<p class="animated bounceInUp">조만간 개별적으로 연락드리겠습니다.</p> 
-						<a class="btn btn-default slider-btn animated bounceInUp">지원마감</a> 
-					</div> 
-				</div> 
-			</div>
-				<div class="item" style="background-image: url(/assets/slider/slider3.jpg)"> 
+				
+				<div class="item active" style="background-image: url(<%= @home_active.picture_url %>)"> 
 					<div class="carousel-caption"> 
 						<div> 
-							<h2 class="heading animated bounceInRight">프로그래밍이 대세라던데</h2> 
-							<p class="animated bounceInLeft">왜 대세인지는 모르겠고....</p> 
-							<a class="btn btn-default slider-btn animated bounceInUp" href="#about-us">코드러그란?</a>
+							<h2 class="heading animated <%= @home_active.ani_heading %>"><%= @home_active.heading %></h2> 
+							<p class="animated bounceIn <%= @home_active.ani_animated %>"><%= @home_active.animated %></p> 
+							<a class="btn btn-default slider-btn animated bounceIn <%= @home_active.ani_button %>" href="<%= @home_active.link %>"><%= @home_active.button %></a> 
 						</div> 
 					</div> 
 				</div>
-				<div class="item" style="background-image: url(/assets/slider/slider2.png)"> 
-					<div class="carousel-caption"> <div> 
-						<h2 class="heading animated bounceInDown">컴퓨터 하나도 몰라요ㅠ</h2> 
-						<p class="animated bounceInUp">울지마요ㅠ 다 가르쳐 드릴게요</p> 
-						<a class="btn btn-default slider-btn animated fadeIn" href="#our-team">팀 인터뷰</a> 
+
+				<% @home.each do |h| %>
+				<div class="item" style="background-image: url(<%= h.picture_url %>)"> 
+					<div class="carousel-caption"> 
+						<div> 
+							<h2 class="heading animated <%= h.ani_heading %>"><%= h.heading %></h2> 
+							<p class="animated <%= h.ani_animated %>"><%= h.animated %></p> 
+							<a class="btn btn-default slider-btn animated <%= h.ani_button %>" href="<%= h.link %>"><%= h.button %></a>
+						</div> 
 					</div> 
-				</div> 
-			</div> 
-			<div class="item" style="background-image: url(/assets/slider/slider1.JPG)"> 
-				<div class="carousel-caption"> 
-					<div> 
-						<h2 class="heading animated bounceInRight">이런거 왜 해요?</h2> 
-						<p class="animated bounceInLeft">일단 한번 해보시죠</p> 
-						<a class="btn btn-default slider-btn animated bounceInUp" href="#contact">만나는 법</a>
-					</div> 
-				</div> 
-			</div>
+				</div>
+				<% end %>
+			<!--	<div class="item" style="background-image: url(/assets/slider/slider2.png)"> -->
+			<!--		<div class="carousel-caption"> <div> -->
+			<!--			<h2 class="heading animated bounceInDown">컴퓨터 하나도 몰라요ㅠ</h2> -->
+			<!--			<p class="animated bounceInUp">울지마요ㅠ 다 가르쳐 드릴게요</p> -->
+			<!--			<a class="btn btn-default slider-btn animated fadeIn" href="#our-team">팀 인터뷰</a> -->
+			<!--		</div> -->
+			<!--	</div> -->
+			<!--</div> -->
+			<!--<div class="item" style="background-image: url(/assets/slider/slider1.JPG)"> -->
+			<!--	<div class="carousel-caption"> -->
+			<!--		<div> -->
+			<!--			<h2 class="heading animated bounceInRight">이런거 왜 해요?</h2> -->
+			<!--			<p class="animated bounceInLeft">일단 한번 해보시죠</p> -->
+			<!--			<a class="btn btn-default slider-btn animated bounceInUp" href="#contact">만나는 법</a>-->
+			<!--		</div> -->
+			<!--	</div> -->
+			<!--</div>-->
 			
 		</div><!--/.carousel-inner-->
 
@@ -91,135 +99,142 @@
 
 </section><!--/#home-->
 
+<!--소개-->
+
 <section id="about-us">
 	<div class="container">
 		<div class="text-center">
 			<div class="col-sm-8 col-sm-offset-2">
-				<h2 class="title-one">코드러그?</h2>
-				<p>경희대학교(회기) 비전공자 중심의 공식 프로그래밍 동아리입니다.</p>
+				<h2 class="title-one"><%= Section.find(1).section_title %></h2>
+				<p><%= Section.find(1).section_content %></p>
 			</div>
 		</div>
 		<div class="about-us">
 			<div class="row">
 				<div class="col-sm-6">
-					<h3>뭐 하는 곳이에요?</h3>
+					<h3><%= Aboutwe.find(1).title_left %></h3>
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-chain-broken"></i> 했던 거</a></li>
-						<li><a href="#mission" data-toggle="tab"><i class="fa fa-th-large"></i> 하는 거</a></li>
-						<li><a href="#community" data-toggle="tab"><i class="fa fa-users"></i> 하고픈거</a></li>
+						<% @aboutwe.each do |a| %>
+						<li class="<%= a.interact_factor1 %>">
+							<a href="#<%= a.link_id %>" data-toggle="tab">
+								<i class="fa <%= a.icon_class %>"></i> <%= a.sub_title %>
+							</a>
+						</li>
+						<% end %>
 					</ul>
 					<div class="tab-content">
-						<div class="tab-pane fade in active" id="about">
+						
+						<% @aboutwe.each do |a| %>
+						<div class="tab-pane fade <%= a.interact_factor2 %> <%= a.interact_factor1 %>" id="<%= a.link_id %>">
 							<div class="media">
-								<img class="pull-left media-object" src="/assets/about-us/whatwedid.jpg" alt="whatwedid"> 
+								<img class="pull-left media-object" src="/assets/about-us/whatwedid.jpg" alt="<%= a.alt %>">
+								<!--이미지 수정요-->
 								<div class="media-body">
-									<p>2014년 시작된 코드러그는 웹서비스 런칭을 목표로 하여 비전공자들이 모이는 동아리입니다.<br> 모임을 통해 프로그래밍 지식을 익히고 최신 경향을 공유하며, 이를 바탕으로 외부 컨퍼런스에 참여하여 지식을 나누어 왔습니다.</p>
+									<p><%= simple_format(a.sub_content) %></p>
 								</div>
 							</div>
 						</div>
-						<div class="tab-pane fade" id="mission">
-							<div class="media">
-								<img class="pull-left media-object" src="/assets/about-us/whatwedo.jpg" alt="whatwedo"> 
-								<div class="media-body">
-									<p>1년 활동을 통해 웹사이트를 만들고 런칭하는 것이 기본 활동입니다. HTML, CSS 등의 기본적인 웹문서 지식부터 차근차근 공부하여 JavaScript, Ruby, Python와 같은 프로그래밍 언어까지 같이 공부합니다.</p>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="community">
-							<div class="media">
-								<img class="pull-left media-object" src="/assets/about-us/whatwewill.JPG" alt="whatwewill"> 
-								<div class="media-body">
-									<p>프로그래밍 공부 뿐만 아니라 커뮤니티 활동을 통해 저변을 넓혀 가는 것을 지향합니다. 혼자가 아닌 여럿은 즐거울 뿐 아니라 힘을 키워줍니다.</p>
-								</div>
-							</div>
-						</div>
+						<% end %>
+						
+						<!--<div class="tab-pane fade" id="mission">-->
+						<!--	<div class="media">-->
+						<!--		<img class="pull-left media-object" src="/assets/about-us/whatwedo.jpg" alt="whatwedo"> -->
+						<!--		<div class="media-body">-->
+						<!--			<p>1년 활동을 통해 웹사이트를 만들고 런칭하는 것이 기본 활동입니다. HTML, CSS 등의 기본적인 웹문서 지식부터 차근차근 공부하여 JavaScript, Ruby, Python와 같은 프로그래밍 언어까지 같이 공부합니다.</p>-->
+						<!--		</div>-->
+						<!--	</div>-->
+						<!--</div>-->
+						
+						<!--<div class="tab-pane fade" id="community">-->
+						<!--	<div class="media">-->
+						<!--		<img class="pull-left media-object" src="/assets/about-us/whatwewill.JPG" alt="whatwewill"> -->
+						<!--		<div class="media-body">-->
+						<!--			<p>프로그래밍 공부 뿐만 아니라 커뮤니티 활동을 통해 저변을 넓혀 가는 것을 지향합니다. 혼자가 아닌 여럿은 즐거울 뿐 아니라 힘을 키워줍니다.</p>-->
+						<!--		</div>-->
+						<!--	</div>-->
+						<!--</div>-->
 					</div>
 				</div>
 				<div class="col-sm-6">
-					<h3 style="margin-top:40px; margin-bottom:40px;">뭘 배운다는거죠?</h3>
+					<h3 style="margin-top:40px; margin-bottom:40px;"><%= Aboutwe.find(1).title_right %></h3>
 					<div class="skill-bar">
-						<div class="skillbar clearfix " data-percent="50%">
+						
+						<% @language.each do |l| %>
+						<div class="skillbar clearfix " data-percent="<%= l.data_percent %>%">
 							<div class="skillbar-title">
-								<span>HTML &amp; CSS</span>
+								<span><%= simple_format(l.language) %></span>
 							</div>
 							<div class="skillbar-bar"></div>
-							<div class="skill-bar-percent">50%</div>
+							<div class="skill-bar-percent"><%= l.data_percent %>%</div>
 						</div> <!-- End Skill Bar -->
-						<div class="skillbar clearfix" data-percent="70%">
-							<div class="skillbar-title"><span>JavaScript</span></div>
-							<div class="skillbar-bar"></div>
-							<div class="skill-bar-percent">70%</div>
-						</div> <!-- End Skill Bar -->
-						<div class="skillbar clearfix " data-percent="85%">
-							<div class="skillbar-title"><span>Ruby on Rails</span></div>
-							<div class="skillbar-bar"></div>
-							<div class="skill-bar-percent">85%</div>
-						</div> <!-- End Skill Bar -->
-						<div class="skillbar clearfix " data-percent="40%">
-							<div class="skillbar-title"><span>Python</span></div>
-							<div class="skillbar-bar"></div>
-							<div class="skill-bar-percent">40%</div>
-						</div> <!-- End Skill Bar -->
-						<!--<div class="skillbar clearfix " data-percent="75%">-->
-						<!--	<div class="skillbar-title"><span>Wordpress</span></div>-->
-						<!--	<div class="skillbar-bar"></div>-->
-						<!--	<div class="skill-bar-percent">75%</div>-->
-						<!--</div> -->
-						<!-- End Skill Bar --></div>
+						<% end %>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section><!--/#about-us-->
 
+	<!--서비스-->
 	<section id="services" class="parallax-section">
 		<div class="container">
 			<div class="row text-center">
 				<div class="col-sm-8 col-sm-offset-2">
-					<h2 class="title-one" style="text-shadow: 2px 2px 4px #000000;">런칭 서비스</h2>
-					<p>코드러그 멤버가 만들거나 참여한 서비스</p>
+					<h2 class="title-one" style="text-shadow: 2px 2px 4px #000000;"><%= Section.find(2).section_title %></h2>
+					<p><%= Section.find(2).section_content %></p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="our-service">
 						<div class="services row">
-							<div class="col-sm-4">
-								<div class="single-service">
-									<!--<i class="fa fa-th"></i>-->
-									<img src="/assets/Lunching/Lunching2.png" style="height:100%; border-radius: 50%;"/>
-									<h2>소중이닷컴</h2>
-									<p style="center !important">대한민국 최초 성인용품 가격비교 사이트</p>
-								</div>
+							
+							<% @services.each do |t| %>
+							<div class="col-sm-4 services-tab">
+								<a href="<%= t.svc_link %>">
+									<div class="single-service">
+										<!--<i class="fa fa-th"></i>-->
+										<img src="<%= t.pic_url %> style="height:100%; border-radius: 50%;"/>
+										<h2><%= t.svc_title %></h2>
+										<p style="color: white; center !important"><%= t.svc_content %></p>
+									</div>
+								</a>
 							</div>
-							<div class="col-sm-4">
-								<div class="single-service">
-									<!--<i class="fa fa-html5"></i>-->
-									<img src="/assets/Lunching/Lunching1.png" style="height:100%; border-radius: 50%;"/>
-									<h2>꿀강</h2>
-									<p style="center !important">경희대 강의 평가 서비스</p>
-								</div>
-							</div>
-							<div class="col-sm-4">
-								<div class="single-service">
+							<% end %>
+							
+							<!--<div class="col-sm-4 services-tab">-->
+							<!--	<a href="http://www.khulgang.xyz">-->
+							<!--		<div class="single-service">-->
+										<!--<i class="fa fa-html5"></i>-->
+							<!--			<img src="/assets/Lunching/Lunching1.png" style="height:100%; border-radius: 50%;"/>-->
+							<!--			<h2>꿀강</h2>-->
+							<!--			<p style="color: white; center !important">경희대 강의 평가 서비스</p>-->
+							<!--		</div>-->
+							<!--	</a>-->
+							<!--</div>-->
+							
+							<!--<div class="col-sm-4 services-tab">-->
+							<!--	<div class="single-service">-->
 									<!--<i class="fa fa-users"></i>-->
-									<img src="/assets/Lunching/Lunching3.png" style="height:100%; border-radius: 50%; background-color:white;" />
-									<h2>후나</h2>
-									<p style="center !important">경희대-외대 미팅 서비스</p>
-								</div>
-							</div></div>
+							<!--		<img src="/assets/Lunching/Lunching3.png" style="height:100%; border-radius: 50%; background-color:white;" />-->
+							<!--		<h2>후나</h2>-->
+							<!--		<p style="color: white; center !important">경희대-외대 미팅 서비스</p>-->
+							<!--	</div>-->
+							<!--</div>-->
+							
 						</div>
 					</div>
 				</div>
 			</div>
-		</section><!--/#service-->
+		</div>
+	</section><!--/#service-->
 
+		<!--인터뷰-->
 		<section id="our-team">
 			<div class="container">
 				<div class="row text-center">
 					<div class="col-sm-8 col-sm-offset-2">
-						<h2 class="title-one">인터뷰</h2>
-						<p>동아리원들의 교과서적인 짤막 인터뷰</p>
+						<h2 class="title-one"><%= Section.find(3).section_title %></h2>
+						<p><%= Section.find(3).section_content %></p>
 					</div>
 				</div>
 				<div id="team-carousel" class="carousel slide" data-interval="false">
@@ -227,192 +242,235 @@
 					<a class="member-right" href="#team-carousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 					<div class="carousel-inner team-members">
 						<div class="row item active">
+							
+							<% @ourteams1.each do |t| %>
 							<div class="col-sm-6 col-md-3">
 								<div class="single-member">
-									<img src="/assets/our-team/member1.jpg" alt="team member" />
-									<h4>최준호</h4>
-									<h5>경영학과</h5>
-									<p>실세 현 회장님.<br> 코드러그 덕분에 제 인생의 코드를 짤 수 있게 되었어요!</p>
+									<img src="<%= t.img_url %>" alt="team member" />
+									<h4><%= t.name %></h4>
+									<h5><%= t.major %></h5>
+									<p><%= simple_format(t.saying) %></p>
 									<div class="socials">
-										<a href="#"><i class="fa fa-facebook"></i></a>
-										<a href="#"><i class="fa fa-twitter"></i></a>
-										<a href="#"><i class="fa fa-google-plus"></i></a>
-										<a href="#"><i class="fa fa-dribbble"></i></a>
-										<a href="#"><i class="fa fa-linkedin"></i></a>
+										<a href="<%= t.sns_1 %>"><i class="fa fa-facebook"></i></a>
+										<a href="<%= t.sns_2 %>"><i class="fa fa-twitter"></i></a>
+										<a href="<%= t.sns_3 %>"><i class="fa fa-google-plus"></i></a>
+										<a href="<%= t.sns_4 %>"><i class="fa fa-dribbble"></i></a>
+										<a href="<%= t.sns_5 %>"><i class="fa fa-linkedin"></i></a>
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-6 col-md-3">
-								<div class="single-member">
-									<img src="/assets/our-team/member6.jpg" alt="team member" />
-									<h4>김구경</h4>
-									<h5>국문학과</h5>
-									<p>MT의 흥을 돋우기 위해 전직 회장이 직접 춤을 추고 있다.</p>
-									<div class="socials">
-										<a href="#"><i class="fa fa-facebook"></i></a>
-										<a href="#"><i class="fa fa-twitter"></i></a>
-										<a href="#"><i class="fa fa-google-plus"></i></a>
-										<a href="#"><i class="fa fa-dribbble"></i></a>
-										<a href="#"><i class="fa fa-linkedin"></i></a>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-3">
-								<div class="single-member">
-									<img src="/assets/our-team/member11.jpg" alt="team member" />
-									<h4>박재은</h4>
-									<h5>컨벤션경영학과</h5>
-									<p>대학 생활의 시작과 끝, 코드러그.<br>르네상스 코드러그!!<br>#전전회장#건배사창시자#오글오글</p>
-									<div class="socials">
-										<a href="#"><i class="fa fa-facebook"></i></a>
-										<a href="#"><i class="fa fa-twitter"></i></a>
-										<a href="#"><i class="fa fa-google-plus"></i></a>
-										<a href="#"><i class="fa fa-dribbble"></i></a>
-										<a href="#"><i class="fa fa-linkedin"></i></a>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-3">
-								<div class="single-member">
-									<img src="/assets/our-team/member4.jpg" alt="team member" />
-									<h4>최준혁</h4>
-									<h5>경영학과</h5>
-									<p>너무 부담가지지 말고 못해도 가벼운 취미로 재밌게 할 수 있어요.</p>
-									<div class="socials">
-										<a href="#"><i class="fa fa-facebook"></i></a>
-										<a href="#"><i class="fa fa-twitter"></i></a>
-										<a href="#"><i class="fa fa-google-plus"></i></a>
-										<a href="#"><i class="fa fa-dribbble"></i></a>
-										<a href="#"><i class="fa fa-linkedin"></i></a>
-									</div>
-								</div>
-							</div>
+							<% end %>
+							
+						<!--	<div class="col-sm-6 col-md-3">-->
+						<!--		<div class="single-member">-->
+						<!--			<img src="/assets/our-team/member1.jpg" alt="team member" />-->
+						<!--			<h4>최준호</h4>-->
+						<!--			<h5>경영학과</h5>-->
+						<!--			<p>이제 뒷방할배.<br> 옷 사러들 오세요🛍</p>-->
+						<!--			<div class="socials">-->
+						<!--				<a href="#"><i class="fa fa-facebook"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-twitter"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-google-plus"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-dribbble"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-linkedin"></i></a>-->
+						<!--			</div>-->
+						<!--		</div>-->
+						<!--	</div>-->
+						<!--	<div class="col-sm-6 col-md-3">-->
+						<!--		<div class="single-member">-->
+						<!--			<img src="/assets/our-team/member6.jpg" alt="team member" />-->
+						<!--			<h4>김구경</h4>-->
+						<!--			<h5>국문학과</h5>-->
+						<!--			<p>MT의 흥을 돋우기 위해 전직 회장이 직접 춤을 추고 있다.</p>-->
+						<!--			<div class="socials">-->
+						<!--				<a href="#"><i class="fa fa-facebook"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-twitter"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-google-plus"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-dribbble"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-linkedin"></i></a>-->
+						<!--			</div>-->
+						<!--		</div>-->
+						<!--	</div>-->
+						<!--	<div class="col-sm-6 col-md-3">-->
+						<!--		<div class="single-member">-->
+						<!--			<img src="/assets/our-team/member11.jpg" alt="team member" />-->
+						<!--			<h4>박재은</h4>-->
+						<!--			<h5>컨벤션경영학과</h5>-->
+						<!--			<p>대학 생활의 시작과 끝, 코드러그.<br>르네상스 코드러그!!<br>#전전회장#건배사창시자#오글오글</p>-->
+						<!--			<div class="socials">-->
+						<!--				<a href="#"><i class="fa fa-facebook"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-twitter"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-google-plus"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-dribbble"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-linkedin"></i></a>-->
+						<!--			</div>-->
+						<!--		</div>-->
+						<!--	</div>-->
 						</div>
+						
 						<div class="row item">
+							
+							<% @ourteams2.each do |t| %>
 							<div class="col-sm-6 col-md-3">
 								<div class="single-member">
-									<img src="/assets/our-team/member8.jpg" alt="team member" />
-									<h4>오은주</h4>
-									<h5>철학과</h5>
-									<p>공자님께선 프로그래밍이 중요하다고 늘 강조하셨습니다.</p>
+									<img src="<%= t.img_url %>" alt="team member" />
+									<h4><%= t.name %></h4>
+									<h5><%= t.major %></h5>
+									<p><%= simple_format(t.saying) %></p>
 									<div class="socials">
-										<a href="#"><i class="fa fa-facebook"></i></a>
-										<a href="#"><i class="fa fa-twitter"></i></a>
-										<a href="#"><i class="fa fa-google-plus"></i></a>
-										<a href="#"><i class="fa fa-dribbble"></i></a>
-										<a href="#"><i class="fa fa-linkedin"></i></a>
+										<a href="<%= t.sns_1 %>"><i class="fa fa-facebook"></i></a>
+										<a href="<%= t.sns_2 %>"><i class="fa fa-twitter"></i></a>
+										<a href="<%= t.sns_3 %>"><i class="fa fa-google-plus"></i></a>
+										<a href="<%= t.sns_4 %>"><i class="fa fa-dribbble"></i></a>
+										<a href="<%= t.sns_5 %>"><i class="fa fa-linkedin"></i></a>
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-6 col-md-3">
-								<div class="single-member">
-									<img src="/assets/our-team/member3.jpg" alt="team member" />
-									<h4>곽규원</h4>
-									<h5>관광학부</h5>
-									<p>솔직히 프로그래밍이 폰게임보다 더 재미있다 ㅇㅈ?</p>
-									<div class="socials">
-										<a href="#"><i class="fa fa-facebook"></i></a>
-										<a href="#"><i class="fa fa-twitter"></i></a>
-										<a href="#"><i class="fa fa-google-plus"></i></a>
-										<a href="#"><i class="fa fa-dribbble"></i></a>
-										<a href="#"><i class="fa fa-linkedin"></i></a>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-3">
-								<div class="single-member">
-									<img src="/assets/our-team/member2.jpg" alt="team member" />
-									<h4>장민설</h4>
-									<h5>생물학과</h5>
-									<p>평소 인내심과 끈기가 부족했는데 코딩을 통해 많은 걸 배운 것 같아요!! 어렵지 않아요!</p>
-									<div class="socials">
-										<a href="#"><i class="fa fa-facebook"></i></a>
-										<a href="#"><i class="fa fa-twitter"></i></a>
-										<a href="#"><i class="fa fa-google-plus"></i></a>
-										<a href="#"><i class="fa fa-dribbble"></i></a>
-										<a href="#"><i class="fa fa-linkedin"></i></a>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-3">
-								<div class="single-member">
-									<img src="/assets/our-team/member5.jpg" alt="team member" style="widt" />
-									<h4>김태양</h4>
-									<h5>경영학과</h5>
-									<p>혼자 코딩공부를 했을땐 골 아파서 사진도 찍어놨는데 코드러그 만나서 다 나았어요! 고마워요 코드러그!</p>
-									<div class="socials">
-										<a href="#"><i class="fa fa-facebook"></i></a>
-										<a href="#"><i class="fa fa-twitter"></i></a>
-										<a href="#"><i class="fa fa-google-plus"></i></a>
-										<a href="#"><i class="fa fa-dribbble"></i></a>
-										<a href="#"><i class="fa fa-linkedin"></i></a>
-									</div>
-								</div>
-							</div>
+							<% end %>
+							
+						<!--	<div class="col-sm-6 col-md-3">-->
+						<!--		<div class="single-member">-->
+						<!--			<img src="/assets/our-team/member8.jpg" alt="team member" />-->
+						<!--			<h4>오은주</h4>-->
+						<!--			<h5>철학과</h5>-->
+						<!--			<p>공자님께선 프로그래밍이 중요하다고 늘 강조하셨습니다.</p>-->
+						<!--			<div class="socials">-->
+						<!--				<a href="#"><i class="fa fa-facebook"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-twitter"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-google-plus"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-dribbble"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-linkedin"></i></a>-->
+						<!--			</div>-->
+						<!--		</div>-->
+						<!--	</div>-->
+						<!--	<div class="col-sm-6 col-md-3">-->
+						<!--		<div class="single-member">-->
+						<!--			<img src="/assets/our-team/member3.jpg" alt="team member" />-->
+						<!--			<h4>곽규원</h4>-->
+						<!--			<h5>관광학부</h5>-->
+						<!--			<p>솔직히 프로그래밍이 폰게임보다 더 재미있다 ㅇㅈ?</p>-->
+						<!--			<div class="socials">-->
+						<!--				<a href="#"><i class="fa fa-facebook"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-twitter"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-google-plus"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-dribbble"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-linkedin"></i></a>-->
+						<!--			</div>-->
+						<!--		</div>-->
+						<!--	</div>-->
+						<!--	<div class="col-sm-6 col-md-3">-->
+						<!--		<div class="single-member">-->
+						<!--			<img src="/assets/our-team/member2.jpg" alt="team member" />-->
+						<!--			<h4>장민설</h4>-->
+						<!--			<h5>생물학과</h5>-->
+						<!--			<p>평소 인내심과 끈기가 부족했는데 코딩을 통해 많은 걸 배운 것 같아요!! 어렵지 않아요!</p>-->
+						<!--			<div class="socials">-->
+						<!--				<a href="#"><i class="fa fa-facebook"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-twitter"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-google-plus"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-dribbble"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-linkedin"></i></a>-->
+						<!--			</div>-->
+						<!--		</div>-->
+						<!--	</div>-->
+						<!--	<div class="col-sm-6 col-md-3">-->
+						<!--		<div class="single-member">-->
+						<!--			<img src="/assets/our-team/member5.jpg" alt="team member" style="widt" />-->
+						<!--			<h4>김태양</h4>-->
+						<!--			<h5>경영학과</h5>-->
+						<!--			<p>혼자 코딩공부를 했을땐 골 아파서 사진도 찍어놨는데 코드러그 만나서 다 나았어요! 고마워요 코드러그!</p>-->
+						<!--			<div class="socials">-->
+						<!--				<a href="#"><i class="fa fa-facebook"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-twitter"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-google-plus"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-dribbble"></i></a>-->
+						<!--				<a href="#"><i class="fa fa-linkedin"></i></a>-->
+						<!--			</div>-->
+						<!--		</div>-->
+						<!--	</div>-->
 						</div>
 
 						<div class="row item">
-							<div class="col-sm-6 col-md-3">
-								<div class="single-member">
-									<img src="/assets/our-team/member10.jpg" alt="team member" />
-									<h4>이기수</h4>
-									<h5>경영학과</h5>
-									<p>프로그래밍이 을마나 재미있게요?<br>#동방_거주_세입자</p>
-									<div class="socials">
-										<a href="#"><i class="fa fa-facebook"></i></a>
-										<a href="#"><i class="fa fa-twitter"></i></a>
-										<a href="#"><i class="fa fa-google-plus"></i></a>
-										<a href="#"><i class="fa fa-dribbble"></i></a>
-										<a href="#"><i class="fa fa-linkedin"></i></a>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-3">
-								<div class="single-member">
-									<img src="/assets/our-team/member9.jpg" alt="team member" />
-									<h4>이우석</h4>
-									<h5>경영학과</h5>
-									<p>내가 다 먹을거야 건들지마! <br>#동방에_있는_카탄_소유주</p>
-									<div class="socials">
-										<a href="#"><i class="fa fa-facebook"></i></a>
-										<a href="#"><i class="fa fa-twitter"></i></a>
-										<a href="#"><i class="fa fa-google-plus"></i></a>
-										<a href="#"><i class="fa fa-dribbble"></i></a>
-										<a href="#"><i class="fa fa-linkedin"></i></a>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-3">
-								<div class="single-member">
-									<img src="/assets/our-team/member12.jpg" alt="team member" style="widt" />
-									<h4>최아영</h4>
-									<h5>언론정보학과</h5>
-									<p>프로그래밍은 언론인으로서의 덕목입니다.</p>
-									<div class="socials">
-										<a href="#"><i class="fa fa-facebook"></i></a>
-										<a href="#"><i class="fa fa-twitter"></i></a>
-										<a href="#"><i class="fa fa-google-plus"></i></a>
-										<a href="#"><i class="fa fa-dribbble"></i></a>
-										<a href="#"><i class="fa fa-linkedin"></i></a>
-									</div>
-								</div>
-							</div>
 							
+							<% @ourteams3.each do |t| %>
 							<div class="col-sm-6 col-md-3">
 								<div class="single-member">
-									<img src="/assets/our-team/member7.jpg" alt="team member" />
-									<h4>이호천</h4>
-									<h5>경영학과</h5>
-									<p>인생이 막막하다구요?? 저같은 놈도 코딩을 하명서 재활했답니다. <br>도전해보세요!</p>
+									<img src="<%= t.img_url %>" alt="team member" />
+									<h4><%= t.name %></h4>
+									<h5><%= t.major %></h5>
+									<p><%= simple_format(t.saying) %></p>
 									<div class="socials">
-										<a href="#"><i class="fa fa-facebook"></i></a>
-										<a href="#"><i class="fa fa-twitter"></i></a>
-										<a href="#"><i class="fa fa-google-plus"></i></a>
-										<a href="#"><i class="fa fa-dribbble"></i></a>
-										<a href="#"><i class="fa fa-linkedin"></i></a>
+										<a href="<%= t.sns_1 %>"><i class="fa fa-facebook"></i></a>
+										<a href="<%= t.sns_2 %>"><i class="fa fa-twitter"></i></a>
+										<a href="<%= t.sns_3 %>"><i class="fa fa-google-plus"></i></a>
+										<a href="<%= t.sns_4 %>"><i class="fa fa-dribbble"></i></a>
+										<a href="<%= t.sns_5 %>"><i class="fa fa-linkedin"></i></a>
 									</div>
 								</div>
 							</div>
+							<% end %>
+							
+							<!--<div class="col-sm-6 col-md-3">-->
+							<!--	<div class="single-member">-->
+							<!--		<img src="/assets/our-team/member4.jpg" alt="team member" />-->
+							<!--		<h4>최준혁</h4>-->
+							<!--		<h5>경영학과</h5>-->
+							<!--		<p>너무 부담가지지 말고 못해도 가벼운 취미로 재밌게 할 수 있어요.</p>-->
+							<!--		<div class="socials">-->
+							<!--			<a href="#"><i class="fa fa-facebook"></i></a>-->
+							<!--			<a href="#"><i class="fa fa-twitter"></i></a>-->
+							<!--			<a href="#"><i class="fa fa-google-plus"></i></a>-->
+							<!--			<a href="#"><i class="fa fa-dribbble"></i></a>-->
+							<!--			<a href="#"><i class="fa fa-linkedin"></i></a>-->
+							<!--		</div>-->
+							<!--	</div>-->
+							<!--</div>-->
+							<!--<div class="col-sm-6 col-md-3">-->
+							<!--	<div class="single-member">-->
+							<!--		<img src="/assets/our-team/member9.jpg" alt="team member" />-->
+							<!--		<h4>이우석</h4>-->
+							<!--		<h5>경영학과</h5>-->
+							<!--		<p>내가 다 먹을거야 건들지마! <br>#동방에_있는_카탄_소유주</p>-->
+							<!--		<div class="socials">-->
+							<!--			<a href="#"><i class="fa fa-facebook"></i></a>-->
+							<!--			<a href="#"><i class="fa fa-twitter"></i></a>-->
+							<!--			<a href="#"><i class="fa fa-google-plus"></i></a>-->
+							<!--			<a href="#"><i class="fa fa-dribbble"></i></a>-->
+							<!--			<a href="#"><i class="fa fa-linkedin"></i></a>-->
+							<!--		</div>-->
+							<!--	</div>-->
+							<!--</div>-->
+							<!--<div class="col-sm-6 col-md-3">-->
+							<!--	<div class="single-member">-->
+							<!--		<img src="/assets/our-team/member12.jpg" alt="team member" style="widt" />-->
+							<!--		<h4>최아영</h4>-->
+							<!--		<h5>언론정보학과</h5>-->
+							<!--		<p>프로그래밍은 언론인으로서의 덕목입니다.</p>-->
+							<!--		<div class="socials">-->
+							<!--			<a href="#"><i class="fa fa-facebook"></i></a>-->
+							<!--			<a href="#"><i class="fa fa-twitter"></i></a>-->
+							<!--			<a href="#"><i class="fa fa-google-plus"></i></a>-->
+							<!--			<a href="#"><i class="fa fa-dribbble"></i></a>-->
+							<!--			<a href="#"><i class="fa fa-linkedin"></i></a>-->
+							<!--		</div>-->
+							<!--	</div>-->
+							<!--</div>-->
+							
+							<!--<div class="col-sm-6 col-md-3">-->
+							<!--	<div class="single-member">-->
+							<!--		<img src="/assets/our-team/member7.jpg" alt="team member" />-->
+							<!--		<h4>이호천</h4>-->
+							<!--		<h5>경영학과</h5>-->
+							<!--		<p>인생이 막막하다구요?? 저같은 놈도 코딩을 하명서 재활했답니다. <br>도전해보세요!</p>-->
+							<!--		<div class="socials">-->
+							<!--			<a href="#"><i class="fa fa-facebook"></i></a>-->
+							<!--			<a href="#"><i class="fa fa-twitter"></i></a>-->
+							<!--			<a href="#"><i class="fa fa-google-plus"></i></a>-->
+							<!--			<a href="#"><i class="fa fa-dribbble"></i></a>-->
+							<!--			<a href="#"><i class="fa fa-linkedin"></i></a>-->
+							<!--		</div>-->
+							<!--	</div>-->
+							<!--</div>-->
 							
 						</div>
 					</div>
@@ -424,8 +482,8 @@
 		<!--	<div class="container">-->
 		<!--		<div class="row text-center">-->
 		<!--			<div class="col-sm-8 col-sm-offset-2">-->
-		<!--				<h2 class="title-one">프레스</h2>-->
-		<!--				<p>언론 등 외부매체에 나타난 코드러그의 모습입니다.</p>-->
+		<!--				<h2 class="title-one"><%= Section.find(4).section_title %></h2>-->
+		<!--				<p><%= Section.find(4).section_content %></p>-->
 		<!--			</div>-->
 		<!--		</div>-->
 		<!--		<ul class="portfolio-filter text-center">-->
@@ -597,8 +655,8 @@
 					<!--		<div class="clients-wrapper">-->
 					<!--			<div class="row text-center">-->
 					<!--				<div class="col-sm-8 col-sm-offset-2">-->
-					<!--					<h2 class="title-one">Clients Say About Us</h2>-->
-					<!--					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>-->
+					<!--					<h2 class="title-one"><%= Section.find(5).section_title %></h2>-->
+					<!--					<p><%= Section.find(5).section_content %></p>-->
 					<!--				</div>-->
 					<!--			</div>-->
 					<!--			<div id="clients-carousel" class="carousel slide" data-ride="carousel"> <!-- Indicators -->
@@ -649,8 +707,8 @@
 					<!--	<div class="container">-->
 					<!--		<div class="row text-center clearfix">-->
 					<!--			<div class="col-sm-8 col-sm-offset-2">-->
-					<!--				<h2 class="title-one">Our Blog</h2>-->
-					<!--				<p class="blog-heading">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>-->
+					<!--				<h2 class="title-one"><%= Section.find(6).section_title %></h2>-->
+					<!--				<p class="blog-heading"><%= Section.find(6).section_content %></p>-->
 					<!--			</div>-->
 					<!--		</div> -->
 					<!--		<div class="row">-->
@@ -814,14 +872,15 @@
 					<!--		</div> -->
 					<!--	</section> -->
 					<!--/#blog-->
-
+						
+						<!--만나는법-->
 						<section id="contact">
 							<div class="container">
 								<div class="row text-center clearfix">
 									<div class="col-sm-8 col-sm-offset-2">
 										<div class="contact-heading">
-											<h2 class="title-one">만나는 법</h2>
-											<p>마주치면 수줍게 인사해 보아요.</p>
+											<h2 class="title-one"><%= Section.find(7).section_title %></h2>
+											<p><%= Section.find(7).section_content %></p>
 										</div>
 									</div>
 								</div>
@@ -831,11 +890,16 @@
 									<div class="pattern"></div>
 									<div class="row text-center clearfix">
 										<div class="col-sm-6">
-											<div class="contact-address"><address><p><span>CODRUG</span> 코드러그</p><strong>경희대학교 학생회관<br> 7층 715호</strong><br><small>( 서울 동대문구 경희대로 23, 학생회관 715호 )</small></address>
+											<div class="contact-address">
+												<address>
+													<p><span><%= Contact.find(1).line_num1 %></span> <%= Contact.find(1).line_num2 %></p>
+													<strong><%= Contact.find(1).line_num3 %></strong><br>
+													<small><%= Contact.find(1).line_num4 %></small>
+												</address>
 												<div class="social-icons">
-													<a href="http://www.facebook.com/codrug"><i class="fa fa-facebook"></i></a>
-													<a href="#"><i class="fa fa-twitter"></i></a>
-													<a href="#"><i class="fa fa-google-plus"></i></a>
+													<% @contacts.each do |t| %>
+													<a href="<%= t.sns_link %>"><i class="fa <%= t.sns_class %>"></i></a>
+													<% end %>
 												</div>
 											</div>
 										</div>
@@ -866,6 +930,7 @@
 								</div> 
 							</section> <!--/#contact--> 
 
+	<!--푸터-->
 	<footer id="footer"> 
 		<div class="container"> 
 			<div class="text-center" style=> 

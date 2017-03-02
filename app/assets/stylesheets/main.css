@@ -628,6 +628,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom:35px
 }
 
+.services-tab {
+	padding: 10px;
+}
+
 .single-service {
 	background-color: rgba(0, 0, 0, 0.39);
 	padding:25px;

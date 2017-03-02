@@ -1,0 +1,957 @@
+<!--접속 전 나오는 로딩화면-->
+<div class="preloader">
+		<div class="preloder-wrap">
+			<div class="preloder-inner"> 
+				<div class="ball"></div> 
+				<div class="ball"></div> 
+				<div class="ball"></div> 
+				<div class="ball"></div> 
+				<div class="ball"></div> 
+				<div class="ball"></div> 
+				<div class="ball"></div>
+			</div>
+		</div>
+	</div><!--/.preloader-->
+
+	<!--상단 헤더 네비게이터-->
+	<header id="navigation"> 
+		<div class="navbar navbar-inverse navbar-fixed-top" role="banner"> 
+			<div class="container"> 
+				<div class="navbar-header"> 
+					<button type="button" class="navbar-toggle" style="border: none;" data-toggle="collapse" data-target=".navbar-collapse"> 
+						<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> 
+					</button> 
+					<a class="navbar-brand" href="/"><h1><img src="/assets/logo.png" alt="logo"></h1></a> 
+				</div> 
+				<form action="/admin/navi_updt" method="post">
+				<div class="collapse navbar-collapse"> 
+					<ul class="nav navbar-nav navbar-right">
+						<li class="scroll active">
+						    <input type="text" name="navi1" style="width:70px;" value="<%= @navigator.navi_name1 %>">
+						</li> 
+						<li class="scroll">
+						    <input type="text" name="navi2" style="width:70px;" value="<%= @navigator.navi_name2 %>">
+						</li> 
+						<li class="scroll">
+							<input type="text" name="navi3" style="width:70px;" value="<%= @navigator.navi_name3 %>">
+						</li> 
+						<li class="scroll">
+							<input type="text" name="navi4" style="width:70px;" value="<%= @navigator.navi_name4 %>">
+						</li>
+						<li class="scroll">
+							<input type="text" name="navi5" style="width:70px;" value="<%= @navigator.navi_name5 %>">
+						</li> 
+						<li class="scroll">
+							<input type="text" name="navi6" style="width:70px;" value="<%= @navigator.navi_name6 %>">
+						</li> 
+						<li class="scroll">
+							<input type="text" name="navi7" style="width:70px;" value="<%= @navigator.navi_name7 %>">
+						</li> 
+						<li class="scroll">
+							<input type="text" name="navi8" style="width:70px;" value="<%= @navigator.navi_name8 %>">
+						</li>
+						<li class="scroll">
+							<button type="submit" class="btn btn-default slider-btn-inHeader animated" style="f" align="center">수정</button>
+						</li>
+					</ul> 
+				</div>
+				</form>
+			</div> 
+		</div><!--/navbar--> 
+	</header> <!--/#navigation--> 
+
+	<!--좌우슬라이드 화면(홈)-->
+	<section id="home">
+		<div class="home-pattern"></div>
+		<div id="main-carousel" class="carousel slide" data-ride="carousel"> 
+			<ol class="carousel-indicators">
+				<li data-target="#main-carousel" data-slide-to="<%= @home_active.id %>" class="active"></li>
+				<% @home.each do |ho| %>
+				<li data-target="#main-carousel" data-slide-to="<%= ho.id %>" class=""></li>
+				<% end %>
+			</ol><!--/.carousel-indicators--> 
+			<div class="carousel-inner">
+				
+				<div class="item active" style="background-image: url(<%= @home_active.picture_url %>)"> 
+					<div class="carousel-caption"> 
+						<div>
+							<form action="/admin/homepage_updt" method="post" enctype="multipart/form-data">
+							<input type="hidden" name="id" value="<%= @home_active.id %>"> 
+							<h2 class="heading animated <%= @home_active.ani_heading %>">
+								<input type="text" name="hheading" style="text-align:center;" value="<%= @home_active.heading %>">
+							</h2><br>
+				        <input type="radio" name="hani" value="bounceInLeft">오른쪽에서 왼쪽으로
+				        <input type="radio" name="hani" value="bounceInRight">왼쪽으로 오른쪽으로
+				        <input type="radio" name="hani" value="bounceInUp">아래에서 위로
+				        <input type="radio" name="hani" value="bounceInDown">위에서 아래로
+				        <input type="radio" name="hani" value="fadeIn">페이드인
+				        <input type="radio" name="hani" value="">없음
+							<p class="animated bounceIn <%= @home_active.ani_animated %>">
+								<input type="text" name="hanimated" style="width: 500px; text-align:center;" value="<%= @home_active.animated %>">
+							</p>
+								<input type="radio" name="aani" value="bounceInLeft">오른쪽에서 왼쪽으로
+				        <input type="radio" name="aani" value="bounceInRight">왼쪽으로 오른쪽으로
+				        <input type="radio" name="aani" value="bounceInUp">아래에서 위로
+				        <input type="radio" name="aani" value="bounceInDown">위에서 아래로
+				        <input type="radio" name="aani" value="fadeIn">페이드인
+				        <input type="radio" name="aani" value="">없음<br>
+							<a class="btn btn-default slider-btn animated bounceIn <%= @home_active.ani_button %>">
+								<input type="text" name="hbutton" style="width:150px; height:45px; text-align:center;" value="<%= @home_active.button %>"><br>
+        			</a><br>
+        			<select id="linkSelect" name="hlink">
+				        <option value="">::링크선택::</option>
+				        <option value="#navigator"><%= @navigator.navi_name1 %></option>
+				        <option value="#about-us"><%= @navigator.navi_name2 %></option>
+				        <option value="#services"><%= @navigator.navi_name3 %></option>
+				        <option value="#our-team"><%= @navigator.navi_name4 %></option>
+				        <option value="#portfolio"><%= @navigator.navi_name5 %></option>
+				        <option value="#clients"><%= @navigator.navi_name6 %></option>
+				        <option value="#blog"><%= @navigator.navi_name7 %></option>
+				        <option value="#contact"><%= @navigator.navi_name8 %></option>
+				        <option value="">직접입력 준비중...</option>
+					    </select><br>
+        				<input type="radio" name="bani" value="bounceInLeft">오른쪽에서 왼쪽으로
+				        <input type="radio" name="bani" value="bounceInRight">왼쪽으로 오른쪽으로
+				        <input type="radio" name="bani" value="bounceInUp">아래에서 위로
+				        <input type="radio" name="bani" value="bounceInDown">위에서 아래로
+				        <input type="radio" name="bani" value="fadeIn">페이드인
+				        <input type="radio" name="bani" value="">없음<br>
+							<input type="file" text-align="center !important" name="hpic">
+    				 	<button type="submit">수정</button>
+    				 	</form>
+						</div>
+					</div>
+				</div>
+
+				<% @home.each do |h| %>
+				<div class="item" style="background-image: url(<%= h.picture_url %>)"> 
+					<div class="carousel-caption"> 
+						<div>
+							<form action="/admin/homepage_updt" method="post" enctype="multipart/form-data">
+							<input type="hidden" name="id" value="<%= h.id %>"> 
+							<h2 class="heading animated <%= h.ani_heading %>">
+								<input type="text" name="hheading" style="text-align:center;" value="<%= h.heading %>">
+							</h2><br>
+				        <input type="radio" name="hani" value="bounceInLeft">오른쪽에서 왼쪽으로
+				        <input type="radio" name="hani" value="bounceInRight">왼쪽으로 오른쪽으로
+				        <input type="radio" name="hani" value="bounceInUp">아래에서 위로
+				        <input type="radio" name="hani" value="bounceInDown">위에서 아래로
+				        <input type="radio" name="hani" value="fadeIn">페이드인
+				        <input type="radio" name="hani" value="">없음
+							<p class="animated bounceIn <%= h.ani_animated %>">
+								<input type="text" name="hanimated" style="width: 500px; text-align:center;" value="<%= h.animated %>">
+							</p>
+								<input type="radio" name="aani" value="bounceInLeft">오른쪽에서 왼쪽으로
+				        <input type="radio" name="aani" value="bounceInRight">왼쪽으로 오른쪽으로
+				        <input type="radio" name="aani" value="bounceInUp">아래에서 위로
+				        <input type="radio" name="aani" value="bounceInDown">위에서 아래로
+				        <input type="radio" name="aani" value="fadeIn">페이드인
+				        <input type="radio" name="aani" value="">없음<br>
+							<a class="btn btn-default slider-btn animated bounceIn <%= h.ani_button %>">
+								<input type="text" name="hbutton" style="width:150px; height:45px; text-align:center;" value="<%= h.button %>"><br>
+        			</a><br>
+        			<select id="linkSelect" name="hlink">
+				        <option value="">::링크선택::</option>
+				        <option value="#navigator"><%= @navigator.navi_name1 %></option>
+				        <option value="#about-us"><%= @navigator.navi_name2 %></option>
+				        <option value="#services"><%= @navigator.navi_name3 %></option>
+				        <option value="#our-team"><%= @navigator.navi_name4 %></option>
+				        <option value="#portfolio"><%= @navigator.navi_name5 %></option>
+				        <option value="#clients"><%= @navigator.navi_name6 %></option>
+				        <option value="#blog"><%= @navigator.navi_name7 %></option>
+				        <option value="#contact"><%= @navigator.navi_name8 %></option>
+				        <option value="">직접입력 준비중...</option>
+					    </select><br>
+        				<input type="radio" name="bani" value="bounceInLeft">오른쪽에서 왼쪽으로
+				        <input type="radio" name="bani" value="bounceInRight">왼쪽으로 오른쪽으로
+				        <input type="radio" name="bani" value="bounceInUp">아래에서 위로
+				        <input type="radio" name="bani" value="bounceInDown">위에서 아래로
+				        <input type="radio" name="bani" value="fadeIn">페이드인
+				        <input type="radio" name="bani" value="">없음<br>
+							<input type="file" text-align="center !important" name="hpic">
+    				 	<button type="submit">수정</button>
+							</form>
+						</div> 
+					</div> 
+				</div>
+				<% end %>
+			<!--	<div class="item" style="background-image: url(/assets/slider/slider2.png)"> -->
+			<!--		<div class="carousel-caption"> <div> -->
+			<!--			<h2 class="heading animated bounceInDown">컴퓨터 하나도 몰라요ㅠ</h2> -->
+			<!--			<p class="animated bounceInUp">울지마요ㅠ 다 가르쳐 드릴게요</p> -->
+			<!--			<a class="btn btn-default slider-btn animated fadeIn" href="#our-team">팀 인터뷰</a> -->
+			<!--		</div> -->
+			<!--	</div> -->
+			<!--</div> -->
+			<!--<div class="item" style="background-image: url(/assets/slider/slider1.JPG)"> -->
+			<!--	<div class="carousel-caption"> -->
+			<!--		<div> -->
+			<!--			<h2 class="heading animated bounceInRight">이런거 왜 해요?</h2> -->
+			<!--			<p class="animated bounceInLeft">일단 한번 해보시죠</p> -->
+			<!--			<a class="btn btn-default slider-btn animated bounceInUp" href="#contact">만나는 법</a>-->
+			<!--		</div> -->
+			<!--	</div> -->
+			<!--</div>-->
+			
+		</div><!--/.carousel-inner-->
+
+		<a class="carousel-left member-carousel-control hidden-xs" href="#main-carousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+		<a class="carousel-right member-carousel-control hidden-xs" href="#main-carousel" data-slide="next"><i class="fa fa-angle-right"></i></a>
+	</div> 
+
+</section><!--/#home-->
+
+<!--소개-->
+
+<section id="about-us">
+	<div class="container">
+		<form action="/admin/about_updt" method="post" enctype="multipart/form-data">> 
+		<div class="text-center">
+			<div class="col-sm-8 col-sm-offset-2">
+				<h2 class="title-one"> <input type="text" name="titleSec" style="text-align:center;" value="<%= Section.find(1).section_title %>"></h2>
+				<p><input type="text" name="contentSec" align="center" style="width:500px; text-align:center;" value="<%= Section.find(1).section_content %>"></p>
+			</div>
+		</div>
+		<div class="about-us">
+			<div class="row">
+				<div class="col-sm-6">
+					<h3><input type="text" name="leftTitle" value="<%= @aboutweLR.title_left %>"></h3>
+					<ul class="nav nav-tabs">
+						<% @aboutwe.each do |a| %>
+						<li class="<%= a.interact_factor1 %>">
+							<a href="#<%= a.link_id %>" data-toggle="tab">
+								<i class="fa <%= a.icon_class %>"></i> <input type="text" name="titleSub<%= a.id %>" style="width:80px;" value="<%= a.sub_title %>">
+							</a>
+						</li>
+						<% end %>
+					</ul>
+					<div class="tab-content">
+						
+						<% @aboutwe.each do |a| %>
+						<div class="tab-pane fade <%= a.interact_factor2 %> <%= a.interact_factor1 %>" id="<%= a.link_id %>">
+							<div class="media">
+								<img class="pull-left media-object" src="<%= a.sub_picture_url %>" alt="<%= a.alt %>">
+								<!--이미지 수정요-->
+								<div class="media-body">
+									<p>
+										<textarea rows="8" cols="30" name="contentSub<%= a.id %>"><%= a.sub_content %></textarea>
+										<input type="file" name="urlPic<%= a.id %>">
+									</p>
+								</div>
+							</div>
+						</div>
+						<% end %>
+						
+						<!--<div class="tab-pane fade" id="mission">-->
+						<!--	<div class="media">-->
+						<!--		<img class="pull-left media-object" src="/assets/about-us/whatwedo.jpg" alt="whatwedo"> -->
+						<!--		<div class="media-body">-->
+						<!--			<p>1년 활동을 통해 웹사이트를 만들고 런칭하는 것이 기본 활동입니다. HTML, CSS 등의 기본적인 웹문서 지식부터 차근차근 공부하여 JavaScript, Ruby, Python와 같은 프로그래밍 언어까지 같이 공부합니다.</p>-->
+						<!--		</div>-->
+						<!--	</div>-->
+						<!--</div>-->
+						
+						<!--<div class="tab-pane fade" id="community">-->
+						<!--	<div class="media">-->
+						<!--		<img class="pull-left media-object" src="/assets/about-us/whatwewill.JPG" alt="whatwewill"> -->
+						<!--		<div class="media-body">-->
+						<!--			<p>프로그래밍 공부 뿐만 아니라 커뮤니티 활동을 통해 저변을 넓혀 가는 것을 지향합니다. 혼자가 아닌 여럿은 즐거울 뿐 아니라 힘을 키워줍니다.</p>-->
+						<!--		</div>-->
+						<!--	</div>-->
+						<!--</div>-->
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<h3 style="margin-top:40px; margin-bottom:40px;"><input type="text" name="rightTitle" value="<%= @aboutweLR.title_right %>"></h3>
+					<div class="skill-bar">
+						
+						<% @language.each do |l| %>
+						<input type="hidden" name="idLang" value="<%= l.id %>">
+						<div class="skillbar clearfix " data-percent="<%= l.data_percent %>%">
+							<div class="skillbar-title">
+								<span><input type="text" name="studyLang<%= l.id %>" style="height:30px;" value="<%= l.language %>"></span>
+							</div>
+							<div class="skillbar-bar"></div>
+							<div class="skill-bar-percent">
+								<input type="number" name="langPercent<%= l.id %>" style="width:50px; height:30px;" value="<%= l.data_percent %>">%
+							</div>
+						</div> <!-- End Skill Bar -->
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button type="submit">수정</button>
+		</form>
+	</section><!--/#about-us-->
+
+	<!--서비스-->
+	<section id="services" class="parallax-section">
+		<div class="container">
+		<form action="/admin/services_updt" method="post" enctype="multipart/form-data">
+			<div class="row text-center">
+				<div class="col-sm-8 col-sm-offset-2">
+					<h2 class="title-one" style="text-shadow: 2px 2px 4px #000000;">
+						<input type="text" name="titleSec" style="text-align:center;" value="<%= Section.find(2).section_title %>">
+					</h2>
+					<p>
+						<input type="text" name="contentSec" style="width:500px; text-align:center;" value="<%= Section.find(2).section_content %>">
+						<input type="file" name="backgroundSec" value="<%= Section.find(2).section_background %>">
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="our-service">
+						<div class="services row">
+							
+							<% @services.each do |t| %>
+							<div class="col-sm-4 services-tab">
+									<div class="single-service">
+										<!--<i class="fa fa-th"></i>-->
+										<img src="<%= t.pic_url %>" style="height:100%; border-radius: 50%;"/>
+										<h2><input type="text" name="titleSvc<%= t.id %>" style="text-align:center;" value="<%= t.svc_title %>"></h2>
+										<p style="color: white; center !important">
+											<input type="text" name="contentSvc<%= t.id %>" style="width:300px; text-align:center;" value="<%= t.svc_content %>"><br>
+											<input type="text" name="linkSvc<%= t.id %>" style="width:300px; text-align:center;" value="<%= t.svc_link %>">
+											<input type="file" name="urlPic<%= t.id %>" value="<%= t.pic_url %>">
+											사진 파일은 정사각 형태여야 합니다.
+										</p>
+									</div>
+							</div>
+							<% end %>
+							<!--<div class="col-sm-4 services-tab">-->
+							<!--	<a href="http://www.khulgang.xyz">-->
+							<!--		<div class="single-service">-->
+										<!--<i class="fa fa-html5"></i>-->
+							<!--			<img src="/assets/Lunching/Lunching1.png" style="height:100%; border-radius: 50%;"/>-->
+							<!--			<h2>꿀강</h2>-->
+							<!--			<p style="color: white; center !important">경희대 강의 평가 서비스</p>-->
+							<!--		</div>-->
+							
+							<!--	</a>-->
+							<!--</div>-->
+							
+							<!--<div class="col-sm-4 services-tab">-->
+							<!--	<div class="single-service">-->
+									<!--<i class="fa fa-users"></i>-->
+							<!--		<img src="/assets/Lunching/Lunching3.png" style="height:100%; border-radius: 50%; background-color:white;" />-->
+							<!--		<h2>후나</h2>-->
+							<!--		<p style="color: white; center !important">경희대-외대 미팅 서비스</p>-->
+							<!--	</div>-->
+							<!--</div>-->
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<button type="submit">수정</button>
+		</div>
+		</form>
+	</section><!--/#service-->
+
+		<!--인터뷰-->
+		<section id="our-team">
+			<div class="container">
+				<form action="/admin/team_updt" method="post" enctype="multipart/form-data">>
+				<div class="row text-center">
+					<div class="col-sm-8 col-sm-offset-2">
+						<h2 class="title-one">
+							<input type="text" name="titleSec" style="text-align:center;" value="<%= Section.find(3).section_title %>">
+						</h2>
+						<p>
+							<input type="text" name="contentSec" style="width:500px; text-align:center;" value="<%= Section.find(3).section_content %>">
+						</p>
+					</div>
+				</div>
+				<div id="team-carousel" class="carousel slide" data-interval="false">
+					<a class="member-left" href="#team-carousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+					<a class="member-right" href="#team-carousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+					<div class="carousel-inner team-members">
+						
+						<div class="row item active">
+							<% @ourteams1.each do |t| %>
+							<div class="col-sm-6 col-md-3">
+								<div class="single-member">
+									<img src="<%= t.img_url %>" alt="team member"/>
+									<input type="file" name="faceImgUrl<%= t.id %>" value="<%= t.img_url %>"><br>
+									<h4><input type="text" name="memberName<%= t.id %>" style="text-align:center;" value="<%= t.name %>"></h4>
+									<h5><input type="text" name="memberMajor<%= t.id %>" style="text-align:center;" value="<%= t.major %>"></h5>
+									<p><textarea rows="3" cols="25" style="text-align:center;" name="memberSaying<%= t.id %>"><%= t.saying %></textarea></p>
+									<div class="socials">
+										<i class="fa fa-facebook"></i><input type="text" name="sns1_<%= t.id %>" value="<%= t.sns_1 %>">
+										<i class="fa fa-twitter"></i><input type="text" name="sns2_<%= t.id %>" value="<%= t.sns_2 %>">
+										<i class="fa fa-google-plus"></i><input type="text" name="sns3_<%= t.id %>" value="<%= t.sns_3 %>">
+										<i class="fa fa-dribbble"></i><input type="text" name="sns4_<%= t.id %>" value="<%= t.sns_4 %>">
+										<i class="fa fa-linkedin"></i><input type="text" name="sns5_<%= t.id %>" value="<%= t.sns_5 %>">
+									</div>
+								</div>
+							</div>
+							<% end %>
+						</div>
+						
+						<div class="row item">
+							<% @ourteams2.each do |t| %>
+							<div class="col-sm-6 col-md-3">
+								<div class="single-member">
+									<img src="<%= t.img_url %>" alt="team member"/>
+									<input type="file" name="faceImgUrl<%= t.id %>" value="<%= t.img_url %>"><br>
+									<h4><input type="text" name="memberName<%= t.id %>" style="text-align:center;" value="<%= t.name %>"></h4>
+									<h5><input type="text" name="memberMajor<%= t.id %>" style="text-align:center;" value="<%= t.major %>"></h5>
+									<p><textarea rows="3" cols="25" style="text-align:center;" name="memberSaying<%= t.id %>"><%= t.saying %></textarea></p>
+									<div class="socials">
+										<i class="fa fa-facebook"></i><input type="text" name="sns1_<%= t.id %>" value="<%= t.sns_1 %>">
+										<i class="fa fa-twitter"></i><input type="text" name="sns2_<%= t.id %>" value="<%= t.sns_2 %>">
+										<i class="fa fa-google-plus"></i><input type="text" name="sns3_<%= t.id %>" value="<%= t.sns_3 %>">
+										<i class="fa fa-dribbble"></i><input type="text" name="sns4_<%= t.id %>" value="<%= t.sns_4 %>">
+										<i class="fa fa-linkedin"></i><input type="text" name="sns5_<%= t.id %>" value="<%= t.sns_5 %>">
+									</div>
+								</div>
+							</div>
+							<% end %>
+						</div>
+
+						<div class="row item">
+							<% @ourteams3.each do |t| %>
+							<div class="col-sm-6 col-md-3">
+								<div class="single-member">
+									<img src="<%= t.img_url %>" alt="team member"/>
+									<input type="file" name="faceImgUrl<%= t.id %>" value="<%= t.img_url %>"><br>
+									<h4><input type="text" name="memberName<%= t.id %>" style="text-align:center;" value="<%= t.name %>"></h4>
+									<h5><input type="text" name="memberMajor<%= t.id %>" style="text-align:center;" value="<%= t.major %>"></h5>
+									<p><textarea rows="3" cols="25" style="text-align:center;" name="memberSaying<%= t.id %>"><%= t.saying %></textarea></p>
+									<div class="socials">
+										<i class="fa fa-facebook"></i><input type="text" name="sns1_<%= t.id %>" value="<%= t.sns_1 %>">
+										<i class="fa fa-twitter"></i><input type="text" name="sns2_<%= t.id %>" value="<%= t.sns_2 %>">
+										<i class="fa fa-google-plus"></i><input type="text" name="sns3_<%= t.id %>" value="<%= t.sns_3 %>">
+										<i class="fa fa-dribbble"></i><input type="text" name="sns4_<%= t.id %>" value="<%= t.sns_4 %>">
+										<i class="fa fa-linkedin"></i><input type="text" name="sns5_<%= t.id %>" value="<%= t.sns_5 %>">
+									</div>
+								</div>
+							</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+				<button type="submit">수정</button>
+				</form>
+			</div>
+		</section><!--/#Our-Team-->
+
+		<!--<section id="portfolio">-->
+		<!--	<div class="container">-->
+		<!--		<div class="row text-center">-->
+		<!--			<div class="col-sm-8 col-sm-offset-2">-->
+		<!--				<h2 class="title-one"><%= Section.find(4).section_title %></h2>-->
+		<!--				<p><%= Section.find(4).section_content %></p>-->
+		<!--			</div>-->
+		<!--		</div>-->
+		<!--		<ul class="portfolio-filter text-center">-->
+		<!--			<li><a class="btn btn-default active" href="#" data-filter="*">All</a></li>-->
+		<!--			<li><a class="btn btn-default" href="#" data-filter=".html">Html</a></li>-->
+		<!--			<li><a class="btn btn-default" href="#" data-filter=".wordpress">Wordpress</a></li>-->
+		<!--			<li><a class="btn btn-default" href="#" data-filter=".joomla">Joomla</a></li>-->
+		<!--			<li><a class="btn btn-default" href="#" data-filter=".megento">Megento</a></li>-->
+		<!--		</ul><!--/#portfolio-filter-->
+		<!--		<div class="portfolio-items">-->
+		<!--			<div class="col-sm-3 col-xs-12 portfolio-item html">-->
+		<!--				<div class="view efffect">-->
+		<!--					<div class="portfolio-image">-->
+		<!--						<img src="/assets/portfolio/1.jpg" alt=""></div> -->
+		<!--						<div class="mask text-center">-->
+		<!--							<h3>Novel</h3>-->
+		<!--							<h4>Lorem ipsum dolor sit amet consectetur</h4>-->
+		<!--							<a href="#"><i class="fa fa-link"></i></a>-->
+		<!--							<a href="/assets/portfolio/big-item.jpg" data-gallery="prettyPhoto"><i class="fa fa-search-plus"></i></a>-->
+		<!--						</div>-->
+		<!--					</div>-->
+		<!--				</div>-->
+		<!--				<div class="col-sm-3 col-xs-12 portfolio-item jooma">-->
+		<!--					<div class="view efffect" >-->
+		<!--						<div class="portfolio-image">-->
+		<!--							<img src="/assets/portfolio/2.jpg" alt="">-->
+		<!--						</div> -->
+		<!--						<div class="mask text-center">-->
+		<!--							<h3>Novel</h3>-->
+		<!--							<h4>Lorem ipsum dolor sit amet consectetur</h4>-->
+		<!--							<a href="#"><i class="fa fa-link"></i></a>-->
+		<!--							<a href="/assets/portfolio/big-item4.jpg" data-gallery="prettyPhoto"><i class="fa fa-search-plus"></i></a>-->
+		<!--						</div>-->
+		<!--					</div>-->
+		<!--				</div>-->
+		<!--				<div class="col-sm-3 col-xs-12 portfolio-item wordpress">-->
+		<!--					<div class="view efffect">-->
+		<!--						<div class="portfolio-image">-->
+		<!--							<img src="/assets/portfolio/3.jpg" alt="">-->
+		<!--						</div> -->
+		<!--						<div class="mask text-center">-->
+		<!--						<h3>Novel</h3>-->
+		<!--						<h4>Lorem ipsum dolor sit amet consectetur</h4>-->
+		<!--						<a href="#"><i class="fa fa-link"></i></a>-->
+		<!--						<a href="/assets/portfolio/big-item.jpg" data-gallery="prettyPhoto"><i class="fa fa-search-plus"></i></a>-->
+		<!--					</div>-->
+		<!--				</div>-->
+		<!--			</div>-->
+		<!--			<div class="col-sm-3 col-xs-12 portfolio-item megento">-->
+		<!--				<div class="view efffect">-->
+		<!--					<div class="portfolio-image">-->
+		<!--						<img src="/assets/portfolio/4.jpg" alt="">-->
+		<!--					</div> -->
+		<!--					<div class="mask text-center">-->
+		<!--						<h3>Novel</h3>-->
+		<!--						<h4>Lorem ipsum dolor sit amet consectetur</h4>-->
+		<!--						<a href="#"><i class="fa fa-link"></i></a>-->
+		<!--						<a href="/assets/portfolio/big-item.jpg" data-gallery="prettyPhoto"><i class="fa fa-search-plus"></i></a>-->
+		<!--					</div>-->
+		<!--				</div>-->
+		<!--			</div>-->
+		<!--			<div class="col-sm-3 col-xs-12 portfolio-item html">-->
+		<!--				<div class="view efffect">-->
+		<!--					<div class="portfolio-image">-->
+		<!--						<img src="/assets/portfolio/5.jpg" alt="">-->
+		<!--					</div> <div class="mask text-center">-->
+		<!--					<h3>Novel</h3>-->
+		<!--					<h4>Lorem ipsum dolor sit amet consectetur</h4>-->
+		<!--					<a href="#"><i class="fa fa-link"></i></a>-->
+		<!--					<a href="/assets/portfolio/big-item.jpg" data-gallery="prettyPhoto"><i class="fa fa-search-plus"></i></a>-->
+		<!--				</div>-->
+		<!--			</div>-->
+		<!--		</div>-->
+		<!--		<div class="col-sm-3 col-xs-12 portfolio-item wordpress">-->
+		<!--			<div class="view efffect">-->
+		<!--				<div class="portfolio-image">-->
+		<!--					<img src="/assets/portfolio/6.jpg" alt="">-->
+		<!--				</div> -->
+		<!--				<div class="mask text-center">-->
+		<!--					<h3>Novel</h3>-->
+		<!--					<h4>Lorem ipsum dolor sit amet consectetur</h4>-->
+		<!--					<a href="#"><i class="fa fa-link"></i></a>-->
+		<!--					<a href="/assets/portfolio/big-item.jpg" data-gallery="prettyPhoto"><i class="fa fa-search-plus"></i></a>-->
+		<!--				</div>-->
+		<!--			</div>-->
+		<!--		</div>-->
+		<!--		<div class="col-sm-3 col-xs-12 portfolio-item html">-->
+		<!--			<div class="view efffect">-->
+		<!--				<div class="portfolio-image">-->
+		<!--					<img src="/assets/portfolio/7.jpg" alt="">-->
+		<!--				</div> -->
+		<!--				<div class="mask text-center">-->
+		<!--					<h3>Novel</h3>-->
+		<!--					<h4>Lorem ipsum dolor sit amet consectetur</h4>-->
+		<!--					<a href="#"><i class="fa fa-link"></i></a>-->
+		<!--					<a href="/assets/portfolio/big-item.jpg" data-gallery="prettyPhoto"><i class="fa fa-search-plus"></i></a>-->
+		<!--				</div>-->
+		<!--			</div>-->
+		<!--		</div>-->
+		<!--		<div class="col-sm-3 col-xs-12 portfolio-item joomla">-->
+		<!--			<div class="view efffect">-->
+		<!--				<div class="portfolio-image">-->
+		<!--					<img src="/assets/portfolio/8.jpg" alt=""></div> -->
+		<!--					<div class="mask text-center">-->
+		<!--						<h3>Novel</h3>-->
+		<!--						<h4>Lorem ipsum dolor sit amet consectetur</h4>-->
+		<!--						<a href="#"><i class="fa fa-link"></i></a>-->
+		<!--						<a href="/assets/portfolio/big-item.jpg" data-gallery="prettyPhoto"><i class="fa fa-search-plus"></i></a>-->
+		<!--					</div>-->
+		<!--				</div>-->
+		<!--			</div>-->
+		<!--			<div class="col-sm-3 col-xs-12 portfolio-item html">-->
+		<!--				<div class="view efffect">-->
+		<!--					<div class="portfolio-image">-->
+		<!--						<img src="/assets/portfolio/9.jpg" alt="">-->
+		<!--					</div> -->
+		<!--					<div class="mask text-center">-->
+		<!--						<h3>Novel</h3>-->
+		<!--						<h4>Lorem ipsum dolor sit amet consectetur</h4>-->
+		<!--						<a href="#"><i class="fa fa-link"></i></a>-->
+		<!--						<a href="/assets/portfolio/big-item.jpg" data-gallery="prettyPhoto"><i class="fa fa-search-plus"></i></a>-->
+		<!--					</div>-->
+		<!--				</div>-->
+		<!--			</div>-->
+		<!--			<div class="col-sm-3 col-xs-12 portfolio-item wordpress">-->
+		<!--				<div class="view efffect">-->
+		<!--					<div class="portfolio-image">-->
+		<!--						<img src="/assets/portfolio/10.jpg" alt=""></div> -->
+		<!--						<div class="mask text-center">-->
+		<!--							<h3>Novel</h3>-->
+		<!--							<h4>Lorem ipsum dolor sit amet consectetur</h4>-->
+		<!--							<a href="#"><i class="fa fa-link"></i></a>-->
+		<!--							<a href="/assets/portfolio/big-item.jpg" data-gallery="prettyPhoto"><i class="fa fa-search-plus"></i></a>-->
+		<!--						</div>-->
+		<!--					</div>-->
+		<!--				</div>-->
+		<!--				<div class="col-sm-3 col-xs-12 portfolio-item joomla">-->
+		<!--					<div class="view efffect">-->
+		<!--						<div class="portfolio-image">-->
+		<!--							<img src="/assets/portfolio/11.jpg" alt=""></div> -->
+		<!--							<div class="mask text-center">-->
+		<!--								<h3>Novel</h3>-->
+		<!--								<h4>Lorem ipsum dolor sit amet consectetur</h4>-->
+		<!--								<a href="#"><i class="fa fa-link"></i></a>-->
+		<!--								<a href="/assets/portfolio/big-item3.jpg" data-gallery="prettyPhoto"><i class="fa fa-search-plus"></i></a>-->
+		<!--							</div>-->
+		<!--						</div>-->
+		<!--					</div>-->
+		<!--					<div class="col-sm-3 col-xs-12 portfolio-item megento">-->
+		<!--						<div class="view efffect">-->
+		<!--							<div class="portfolio-image">-->
+		<!--								<img src="/assets/portfolio/12.jpg" alt=""></div> -->
+		<!--								<div class="mask text-center">-->
+		<!--									<h3>Novel</h3>-->
+		<!--									<h4>Lorem ipsum dolor sit amet consectetur</h4>-->
+		<!--									<a href="#"><i class="fa fa-link"></i></a>-->
+		<!--									<a href="/assets/portfolio/big-item4.jpg" data-gallery="prettyPhoto"><i class="fa fa-search-plus"></i></a>-->
+		<!--								</div>-->
+		<!--							</div>-->
+		<!--						</div>-->
+		<!--					</div>-->
+		<!--				</div> -->
+
+		<!--			</section> -->
+					<!--/#portfolio-->
+
+					<!--<section id="clients" class="parallax-section">-->
+					<!--	<div class="container">-->
+					<!--		<div class="clients-wrapper">-->
+					<!--			<div class="row text-center">-->
+					<!--				<div class="col-sm-8 col-sm-offset-2">-->
+					<!--					<h2 class="title-one"><%= Section.find(5).section_title %></h2>-->
+					<!--					<p><%= Section.find(5).section_content %></p>-->
+					<!--				</div>-->
+					<!--			</div>-->
+					<!--			<div id="clients-carousel" class="carousel slide" data-ride="carousel"> <!-- Indicators -->
+					<!--				<ol class="carousel-indicators">-->
+					<!--					<li data-target="#clients-carousel" data-slide-to="0" class="active"></li>-->
+					<!--					<li data-target="#clients-carousel" data-slide-to="1"></li>-->
+					<!--					<li data-target="#clients-carousel" data-slide-to="2"></li>-->
+					<!--				</ol> <!-- Wrapper for slides -->
+					<!--				<div class="carousel-inner">-->
+					<!--					<div class="item active">-->
+					<!--						<div class="single-client">-->
+					<!--							<div class="media">-->
+					<!--								<img class="pull-left" src="/assets/clients/client1.jpg" alt="">-->
+					<!--								<div class="media-body">-->
+					<!--									<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p><small>Someone famous in Source Title</small><a href="">www.yourwebsite.com</a></blockquote>-->
+					<!--								</div>-->
+					<!--							</div>-->
+					<!--						</div>-->
+					<!--					</div>-->
+					<!--					<div class="item">-->
+					<!--						<div class="single-client">-->
+					<!--							<div class="media">-->
+					<!--								<img class="pull-left" src="/assets/clients/client3.jpg" alt="">-->
+					<!--								<div class="media-body">-->
+					<!--									<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p><small>Someone famous in Source Title</small><a href="">www.yourwebsite.com</a></blockquote>-->
+					<!--								</div>-->
+					<!--							</div>-->
+					<!--						</div>-->
+					<!--					</div>-->
+					<!--					<div class="item">-->
+					<!--						<div class="single-client">-->
+					<!--							<div class="media">-->
+					<!--								<img class="pull-left" src="/assets/clients/client2.jpg" alt="">-->
+					<!--								<div class="media-body">-->
+					<!--									<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p><small>Someone famous in Source Title</small><a href="">www.yourwebsite.com</a></blockquote>-->
+					<!--								</div>-->
+					<!--							</div>-->
+					<!--						</div>-->
+					<!--					</div>-->
+					<!--				</div>-->
+					<!--			</div>-->
+					<!--		</div>-->
+					<!--	</div>-->
+					<!--</section>-->
+					<!--/#clients-->
+
+					<!--<section id="blog"> -->
+					<!--	<div class="container">-->
+					<!--		<div class="row text-center clearfix">-->
+					<!--			<div class="col-sm-8 col-sm-offset-2">-->
+					<!--				<h2 class="title-one"><%= Section.find(6).section_title %></h2>-->
+					<!--				<p class="blog-heading"><%= Section.find(6).section_content %></p>-->
+					<!--			</div>-->
+					<!--		</div> -->
+					<!--		<div class="row">-->
+					<!--			<div class="col-sm-4">-->
+					<!--				<div class="single-blog">-->
+					<!--					<img src="/assets/blog/1.jpg" alt="" />-->
+					<!--					<h2>Lorem ipsum dolor sit amet</h2>-->
+					<!--					<ul class="post-meta">-->
+					<!--						<li><i class="fa fa-pencil-square-o"></i><strong> Posted By:</strong> John</li>-->
+					<!--						<li><i class="fa fa-clock-o"></i><strong> Posted On:</strong> Apr 15 2014</li>-->
+					<!--					</ul>-->
+					<!--					<div class="blog-content">-->
+					<!--						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>-->
+					<!--					</div>-->
+					<!--					<a href="" class="btn btn-primary" data-toggle="modal" data-target="#blog-detail">Read More</a>-->
+					<!--				</div>-->
+					<!--				<div class="modal fade" id="blog-detail" tabindex="-1" role="dialog" aria-hidden="true">-->
+					<!--					<div class="modal-dialog">-->
+					<!--						<div class="modal-content">-->
+					<!--							<div class="modal-body">-->
+					<!--								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+					<!--								<img src="/assets/blog/3.jpg" alt="" />-->
+					<!--								<h2>Lorem ipsum dolor sit amet</h2>-->
+					<!--								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>-->
+					<!--							</div> -->
+					<!--						</div>-->
+					<!--					</div>-->
+					<!--				</div>-->
+					<!--			</div>-->
+					<!--			<div class="col-sm-4">-->
+					<!--				<div class="single-blog">-->
+					<!--					<img src="/assets/blog/2.jpg" alt="" />-->
+					<!--					<h2>Lorem ipsum dolor sit amet</h2>-->
+					<!--					<ul class="post-meta">-->
+					<!--						<li><i class="fa fa-pencil-square-o"></i><strong> Posted By:</strong> John</li>-->
+					<!--						<li><i class="fa fa-clock-o"></i><strong> Posted On:</strong> Apr 15 2014</li>-->
+					<!--					</ul>-->
+					<!--					<div class="blog-content">-->
+					<!--						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>-->
+					<!--					</div>-->
+					<!--					<a href="" class="btn btn-primary" data-toggle="modal" data-target="#blog-two">Read More</a>-->
+					<!--				</div>-->
+					<!--				<div class="modal fade" id="blog-two" tabindex="-1" role="dialog" aria-hidden="true">-->
+					<!--					<div class="modal-dialog">-->
+					<!--						<div class="modal-content">-->
+					<!--							<div class="modal-body">-->
+					<!--								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+					<!--								<img src="/assets/blog/2.jpg" alt="" />-->
+					<!--								<h2>Lorem ipsum dolor sit amet</h2>-->
+					<!--								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>-->
+					<!--							</div>-->
+					<!--						</div>-->
+					<!--					</div>-->
+					<!--				</div>-->
+					<!--			</div>-->
+					<!--			<div class="col-sm-4">-->
+					<!--				<div class="single-blog">-->
+					<!--					<img src="/assets/blog/3.jpg" alt="" />-->
+					<!--					<h2>Lorem ipsum dolor sit amet</h2>-->
+					<!--					<ul class="post-meta">-->
+					<!--						<li><i class="fa fa-pencil-square-o"></i><strong> Posted By:</strong> John</li>-->
+					<!--						<li><i class="fa fa-clock-o"></i><strong> Posted On:</strong> Apr 15 2014</li>-->
+					<!--					</ul>-->
+					<!--					<div class="blog-content">-->
+					<!--						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>-->
+					<!--					</div>-->
+					<!--					<a href="" class="btn btn-primary" data-toggle="modal" data-target="#blog-three">Read More</a>-->
+					<!--				</div>-->
+					<!--				<div class="modal fade" id="blog-three" tabindex="-1" role="dialog" aria-hidden="true">-->
+					<!--					<div class="modal-dialog">-->
+					<!--						<div class="modal-content">-->
+					<!--							<div class="modal-body">-->
+					<!--								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+					<!--								<img src="/assets/blog/3.jpg" alt="" />-->
+					<!--								<h2>Lorem ipsum dolor sit amet</h2>-->
+					<!--								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>-->
+					<!--							</div> -->
+					<!--						</div>-->
+					<!--					</div>-->
+					<!--				</div>-->
+					<!--			</div>-->
+					<!--			<div class="col-sm-4">-->
+					<!--				<div class="single-blog">-->
+					<!--					<img src="/assets/blog/3.jpg" alt="" />-->
+					<!--					<h2>Lorem ipsum dolor sit amet</h2>-->
+					<!--					<ul class="post-meta">-->
+					<!--						<li><i class="fa fa-pencil-square-o"></i><strong> Posted By:</strong> John</li>-->
+					<!--						<li><i class="fa fa-clock-o"></i><strong> Posted On:</strong> Apr 15 2014</li>-->
+					<!--					</ul>-->
+					<!--					<div class="blog-content">-->
+					<!--						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>-->
+					<!--					</div>-->
+					<!--					<a href="" class="btn btn-primary" data-toggle="modal" data-target="#blog-four">Read More</a></div>-->
+					<!--					<div class="modal fade" id="blog-four" tabindex="-1" role="dialog" aria-hidden="true">-->
+					<!--						<div class="modal-dialog">-->
+					<!--							<div class="modal-content">-->
+					<!--								<div class="modal-body">-->
+					<!--									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+					<!--									<img src="/assets/blog/3.jpg" alt="" />-->
+					<!--									<h2>Lorem ipsum dolor sit amet</h2>-->
+					<!--									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>-->
+					<!--								</div> -->
+					<!--							</div>-->
+					<!--						</div>-->
+					<!--					</div>-->
+					<!--				</div>-->
+					<!--				<div class="col-sm-4">-->
+					<!--					<div class="single-blog">-->
+					<!--						<img src="/assets/blog/2.jpg" alt="" />-->
+					<!--						<h2>Lorem ipsum dolor sit amet</h2>-->
+					<!--						<ul class="post-meta">-->
+					<!--							<li><i class="fa fa-pencil-square-o"></i><strong> Posted By:</strong> John</li>-->
+					<!--							<li><i class="fa fa-clock-o"></i><strong> Posted On:</strong> Apr 15 2014</li>-->
+					<!--						</ul>-->
+					<!--						<div class="blog-content">-->
+					<!--							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>-->
+					<!--						</div>-->
+					<!--						<a href="" class="btn btn-primary" data-toggle="modal" data-target="#blog-six">Read More</a>-->
+					<!--					</div>-->
+					<!--					<div class="modal fade" id="blog-six" tabindex="-1" role="dialog" aria-hidden="true">-->
+					<!--						<div class="modal-dialog">-->
+					<!--							<div class="modal-content">-->
+					<!--								<div class="modal-body">-->
+					<!--									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+					<!--									<img src="/assets/blog/2.jpg" alt="" />-->
+					<!--									<h2>Lorem ipsum dolor sit amet</h2>-->
+					<!--									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>-->
+					<!--								</div> -->
+					<!--							</div>-->
+					<!--						</div>-->
+					<!--					</div>-->
+					<!--				</div>-->
+
+					<!--				<div class="col-sm-4">-->
+					<!--					<div class="single-blog">-->
+					<!--						<img src="/assets/blog/1.jpg" alt="" />-->
+					<!--						<h2>Lorem ipsum dolor sit amet</h2>-->
+					<!--						<ul class="post-meta">-->
+					<!--							<li><i class="fa fa-pencil-square-o"></i><strong> Posted By:</strong> John</li>-->
+					<!--							<li><i class="fa fa-clock-o"></i><strong> Posted On:</strong> Apr 15 2014</li>-->
+					<!--						</ul>-->
+					<!--						<div class="blog-content">-->
+					<!--							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>-->
+					<!--						</div>-->
+					<!--						<a href="" class="btn btn-primary" data-toggle="modal" data-target="#blog-seven">Read More</a>-->
+					<!--					</div>-->
+					<!--					<div class="modal fade" id="blog-seven" tabindex="-1" role="dialog" aria-hidden="true">-->
+					<!--						<div class="modal-dialog">-->
+					<!--							<div class="modal-content">-->
+					<!--								<div class="modal-body">-->
+					<!--									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+					<!--									<img src="/assets/blog/1.jpg" alt="" />-->
+					<!--									<h2>Lorem ipsum dolor sit amet</h2>-->
+					<!--									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>-->
+					<!--								</div> -->
+					<!--							</div>-->
+					<!--						</div>-->
+					<!--					</div>-->
+					<!--				</div> -->
+					<!--			</div> -->
+					<!--		</div> -->
+					<!--	</section> -->
+					<!--/#blog-->
+						
+						<!--만나는법-->
+						<section id="contact">
+							<form action="/admin/cont_updt" method="post">
+							<div class="container">
+								<div class="row text-center clearfix">
+									<div class="col-sm-8 col-sm-offset-2">
+										<div class="contact-heading">
+											<h2 class="title-one">
+												<input type="text" name="titleSec" style="text-align:center;" value="<%= Section.find(7).section_title %>">
+											</h2>
+											<p>
+												<input type="text" name="contentSec" style="width:500px; text-align:center;" value="<%= Section.find(7).section_content %>">
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="container">
+								<div class="contact-details">
+									<div class="pattern"></div>
+									<div class="row text-center clearfix">
+										<div class="col-sm-6">
+											<div class="contact-address">
+												<address>
+													<p>
+														<span>
+														<input type="text" name="lineNum1" value="<%= @contacts_line.line_num1 %>">
+														</span> 
+														<input type="text" name="lineNum2" value="<%= @contacts_line.line_num2 %>">
+													</p>
+													<strong>
+														<input type="text" name="lineNum3" style="width:450px; text-align:center;" value="<%= @contacts_line.line_num3 %>">
+													</strong>
+													<small>
+														<input type="text" name="lineNum4" style="width:450px; text-align:center;" value="<%= @contacts_line.line_num4 %>">
+													</small>
+												</address>
+												<div class="social-icons">
+													<% @contacts.each do |t| %>
+													<a href=""><i class="fa <%= t.sns_class %>"></i></a>
+													<input type="text" style="width:300px; text-align:center;" name="snsLink<%= t.id %>" value="<%= t.sns_link %>"><br>
+													<% end %>
+												</div>
+											</div>
+										</div>
+										
+										<div class="col-sm-6"> 
+											<div id="contact-form-section">
+												
+												<div id="map" style="height:100%; width:auto;"></div>
+												
+												
+												<!--<div class="status alert alert-success" style="display: none"></div>-->
+												<!--<form id="contact-form" class="contact" name="contact-form" method="post" action="send-mail.php">-->
+												<!--	<div class="form-group">-->
+												<!--		<input type="text" name="name" class="form-control name-field" required="required" placeholder="Your Name"></div>-->
+												<!--		<div class="form-group">-->
+												<!--			<input type="email" name="email" class="form-control mail-field" required="required" placeholder="Your Email">-->
+												<!--		</div> -->
+												<!--		<div class="form-group">-->
+												<!--			<textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Message"></textarea>-->
+												<!--		</div> -->
+												<!--		<div class="form-group">-->
+												<!--			<button type="submit" class="btn btn-primary">Send</button>-->
+												<!--		</div>-->
+												<!--	</form> -->
+												<!--</div>-->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<button type="submit" style="position:relative; z-index:10;">수정</button>
+							</form>
+						</section>
+						<!--/#contact--> 
+
+	<!--푸터-->
+	<footer id="footer"> 
+		<div class="container"> 
+			<div class="text-center" style=> 
+				<p>Copyright &copy; 2016 - <a href="http://www.codrug.me">CODRUG</a> | All Rights Reserved</p> 
+			</div> 
+		</div> 
+	</footer> <!--/#footer--> 
+
+	<!--활성화하니까 헤더드롭다운이 안먹힘 -->
+	<!--<script type="text/javascript" src="/assets/jquery.js"></script> -->
+	
+	<script type="text/javascript" src="/assets/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/assets/smoothscroll.js"></script> 
+	<script type="text/javascript" src="/assets/jquery.isotope.min.js"></script>
+	<script type="text/javascript" src="/assets/jquery.prettyPhoto.js"></script> 
+	<script type="text/javascript" src="/assets/jquery.parallax.js"></script> 
+	<script type="text/javascript" src="/assets/main.js"></script>
+	
+	<!--다음지도 API-->
+	<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=dd794085e5f290724313a5b59399568d"></script>
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = { 
+		        center: new daum.maps.LatLng(37.595377, 127.055556), // 지도의 중심좌표
+		        level: 4, // 지도의 확대 레벨
+		        draggable: false
+		    };
+		
+		var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		
+		// 마커가 표시될 위치입니다 
+		var markerPosition  = new daum.maps.LatLng(37.595377, 127.055556); 
+		
+		// 마커를 생성합니다
+		var marker = new daum.maps.Marker({
+		    position: markerPosition
+		});
+
+		// 마커가 지도 위에 표시되도록 설정합니다
+		marker.setMap(map);
+		
+		// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+		// marker.setMap(null);    
+	</script>

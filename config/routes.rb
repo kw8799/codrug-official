@@ -2,7 +2,22 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'home/index'
   get 'home/test'
+  
+  get 'admin' => "admin#codrug"
+  get 'admin/codrug'
+  post 'admin/admin_login'
+  get 'admin/adjust'
+  post 'admin/navi_updt'
+  post 'admin/homepage_updt'
+  post 'admin/homepage_new'
+  post 'admin/about_updt'
+  post 'admin/services_new'
+  post 'admin/services_updt'
+  post 'admin/team_updt'
+  post 'admin/cont_updt'
+  get 'admin/logout'
 
+  get 'admin/index1'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

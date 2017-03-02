@@ -1,0 +1,178 @@
+<a href="/admin/logout">로그아웃</a>
+
+<h3> 헤더 네비게이션 메뉴</h3>
+메뉴를 추가하려면 메인화면 코드 수정이 필요합니다.
+<form action="/admin/navi_updt" method="post">
+    <input type="text" name="navi1" value="<%= @navigator.navi_name1 %>">
+    <input type="text" name="navi2" value="<%= @navigator.navi_name2 %>">
+    <input type="text" name="navi3" value="<%= @navigator.navi_name3 %>">
+    <input type="text" name="navi4" value="<%= @navigator.navi_name4 %>">
+    <input type="text" name="navi5" value="<%= @navigator.navi_name5 %>">
+    <input type="text" name="navi6" value="<%= @navigator.navi_name6 %>">
+    <input type="text" name="navi7" value="<%= @navigator.navi_name7 %>">
+    <input type="text" name="navi8" value="<%= @navigator.navi_name8 %>">
+    <button type="submit">수정</button>
+</form>
+<hr>
+
+<% @homepage.each do |t| %>
+<h3>홈 슬라이드 <%= t.id %></h3>
+<form action="/admin/homepage_updt" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="<%= t.id %>">
+    <input type="text" name="hheading" value="<%= t.heading %>"><br>
+        <input type="radio" name="hani" value="bounceInLeft">오른쪽에서 왼쪽으로<br>
+        <input type="radio" name="hani" value="bounceInRight">왼쪽으로 오른쪽으로<br>
+        <input type="radio" name="hani" value="bounceInUp">아래에서 위로<br>
+        <input type="radio" name="hani" value="bounceInDown">위에서 아래로<br>
+        <input type="radio" name="hani" value="fadeIn">페이드인<br>
+        <input type="radio" name="hani" value="">없음<br>
+    <input type="text" name="hanimated" value="<%= t.animated %>"><br>
+        <input type="radio" name="aani" value="bounceInLeft">오른쪽에서 왼쪽으로<br>
+        <input type="radio" name="aani" value="bounceInRight">왼쪽으로 오른쪽으로<br>
+        <input type="radio" name="aani" value="bounceInUp">아래에서 위로<br>
+        <input type="radio" name="aani" value="bounceInDown">위에서 아래로<br>
+        <input type="radio" name="aani" value="fadeIn">페이드인<br>
+        <input type="radio" name="aani" value="">없음<br>
+    <input type="text" name="hbutton" value="<%= t.button %>"><br>
+        <input type="radio" name="bani" value="bounceInLeft">오른쪽에서 왼쪽으로<br>
+        <input type="radio" name="bani" value="bounceInRight">왼쪽으로 오른쪽으로<br>
+        <input type="radio" name="bani" value="bounceInUp">아래에서 위로<br>
+        <input type="radio" name="bani" value="bounceInDown">위에서 아래로<br>
+        <input type="radio" name="bani" value="fadeIn">페이드인<br>
+        <input type="radio" name="bani" value="">없음<br>
+    
+    <select id="linkSelect" name="hlink">
+        <option value="">::선택::</option>
+        <option value="#navigator"><%= @navigator.navi_name1 %></option>
+        <option value="#about-us"><%= @navigator.navi_name2 %></option>
+        <option value="#services"><%= @navigator.navi_name3 %></option>
+        <option value="#our-team"><%= @navigator.navi_name4 %></option>
+        <option value="#portfolio"><%= @navigator.navi_name5 %></option>
+        <option value="#clients"><%= @navigator.navi_name6 %></option>
+        <option value="#blog"><%= @navigator.navi_name7 %></option>
+        <option value="#contact"><%= @navigator.navi_name8 %></option>
+        <option value="">직접입력 준비중...</option>
+    </select>
+    <input type="file" name="hpic">
+    <button type="submit">수정</button>
+</form>
+<% end %>
+
+<h3>홈 슬라이드 새로 만들기</h3>
+<form action="/admin/homepage_new" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id">
+    <input type="text" name="hheading"><br>
+        <input type="radio" name="hani" value="bounceInLeft">오른쪽에서 왼쪽으로<br>
+        <input type="radio" name="hani" value="bounceInRight">왼쪽으로 오른쪽으로<br>
+        <input type="radio" name="hani" value="bounceInUp">아래에서 위로<br>
+        <input type="radio" name="hani" value="bounceInDown">위에서 아래로<br>
+        <input type="radio" name="hani" value="fadeIn">페이드인<br>
+        <input type="radio" name="hani" value="">없음<br>
+    <input type="text" name="hanimated"><br>
+        <input type="radio" name="aani" value="bounceInLeft">오른쪽에서 왼쪽으로<br>
+        <input type="radio" name="aani" value="bounceInRight">왼쪽으로 오른쪽으로<br>
+        <input type="radio" name="aani" value="bounceInUp">아래에서 위로<br>
+        <input type="radio" name="aani" value="bounceInDown">위에서 아래로<br>
+        <input type="radio" name="aani" value="fadeIn">페이드인<br>
+        <input type="radio" name="aani" value="">없음<br>
+    <input type="text" name="hbutton"><br>
+        <input type="radio" name="bani" value="bounceInLeft">오른쪽에서 왼쪽으로<br>
+        <input type="radio" name="bani" value="bounceInRight">왼쪽으로 오른쪽으로<br>
+        <input type="radio" name="bani" value="bounceInUp">아래에서 위로<br>
+        <input type="radio" name="bani" value="bounceInDown">위에서 아래로<br>
+        <input type="radio" name="bani" value="fadeIn">페이드인<br>
+        <input type="radio" name="bani" value="">없음<br>
+    
+    <select id="linkSelect" name="hlinkSelect">
+        <option value="">::선택::</option>
+        <option value="#navigator"><%= @navigator.navi_name1 %></option>
+        <option value="#about-us"><%= @navigator.navi_name2 %></option>
+        <option value="#services"><%= @navigator.navi_name3 %></option>
+        <option value="#our-team"><%= @navigator.navi_name4 %></option>
+        <option value="#portfolio"><%= @navigator.navi_name5 %></option>
+        <option value="#clients"><%= @navigator.navi_name6 %></option>
+        <option value="#blog"><%= @navigator.navi_name7 %></option>
+        <option value="#contact"><%= @navigator.navi_name8 %></option>
+        <option value="">직접입력</option>
+    </select>
+    <input type="text" name="hlink">
+    
+    <input type="file" name="hpic">
+    <button type="submit">생성</button>
+</form>
+<hr>
+
+<h3>소개(about-us)</h3>
+<form action="/admin/about_updt" method="post"> 
+    Section Title : <input type="text" name="titleSec" value="<%= Section.find(1).section_title %>"><br>
+    Section content : <input type="text" name="contentSec" value="<%= Section.find(1).section_content %>"><br>
+    
+    좌측 타이틀 : <input type="text" name="leftTitle" value="<%= @aboutweLR.title_left %>"><br>
+    
+    <% @aboutweSUB.each do |t| %>
+    <input type="hidden" name="idSub" value="<%= t.id %>">
+    좌측 메뉴 타이틀 : <input type="text" name="titleSub<%= t.id %>" value="<%= t.sub_title %>"><br>
+    좌측 메뉴 콘텐츠 : <input type="text" name="contentSub<%= t.id %>" value="<%= t.sub_content %>"><br>
+    좌측 메뉴 사진 <input type="file" name="urlPic<%= t.id %>"><br>
+    <% end %>
+    
+    우측 타이틀 : <input type="text" name="rightTitle" value="<%= @aboutweLR.title_right %>"><br>
+    
+    <% @aboutweLang.each do |l| %>
+    <input type="hidden" name="idLang" value="<%= l.id %>">
+    학습 언어 : <input type="text" name="studyLang<%= l.id %>" value="<%= l.language %>"><br>
+    퍼센트 : <input type="number" name="langPercent<%= l.id %>" value="<%= l.data_percent %>"><br>
+    <% end %>
+    <button type="submit">수정</button>
+</form>
+<hr>
+
+<h3>서비스(services)</h3>
+<form action="/admin/services_updt" method="post">
+    Section title : <input type="text" name="titleSec" value="<%= Section.find(2).section_title %>"><br>
+    Section content : <input type="text" name="contentSec" value="<%= Section.find(2).section_content %>"><br>
+    Section background : <input type="file" name="backgroundSec" value=""><br>
+    <% @services.each do |t| %>
+    서비스명 : <input type="text" name="titleSvc<%= t.id %>" value="<%= t.svc_title %>">
+    서비스설명 : <input type="text" name="contentSvc<%= t.id %>" value="<%= t.svc_content %>">
+    서비스링크 : <input type="text" name="linkSvc<%= t.id %>" value="<%= t.svc_link %>">
+    서비스로고 : <input type="file" name="urlPic<%= t.id %>" value="<%= t.pic_url %>">
+    <% end %>
+    <button type="submit">수정</button>
+</form>
+<hr>
+
+<h3>팀인터뷰(our-team)</h3>
+<form action="/admin/team_updt" method="post">
+    Section title : <input type="text" name="titleSec" value="<%= Section.find(3).section_title %>"><br>
+    Section content : <input type="text" name="contentSec" value="<%= Section.find(3).section_content %>"><br>
+    <% @ourteams.each do |t| %>
+    멤버 이름 : <input type="text" name="memberName<%= t.id %>" value="<%= t.name %>"><br>
+    멤버 학과 : <input type="text" name="memberMajor<%= t.id %>" value="<%= t.major %>"><br>
+    인터뷰 내용 : <textarea name="memberSaying<%= t.id %>"><%= t.saying %></textarea><br>
+    facebook : <input type="text" name="sns1_<%= t.id %>" value="<%= t.sns_1 %>">
+    twitter : <input type="text" name="sns2_<%= t.id %>" value="<%= t.sns_2 %>">
+    google : <input type="text" name="sns3_<%= t.id %>" value="<%= t.sns_3 %>">
+    dribbble : <input type="text" name="sns4_<%= t.id %>" value="<%= t.sns_4 %>">
+    linkedin : <input type="text" name="sns5_<%= t.id %>" value="<%= t.sns_5 %>"><br>
+    멤버 사진 : <input type="file" name="faceImgUrl<%= t.id %>" value="<%= t.img_url %>"><br>
+    <% end %>
+    <button type="submit">수정</button>
+</form>
+<hr>
+
+<h3>만나는법(contact)</h3>
+    Section title : <input type="text" name="titleSec" value="<%= Section.find(7).section_title %>"><br>
+    Section content : <input type="text" name="contentSec" value="<%= Section.find(7).section_content %>"><br>
+    
+    1번 좌측 문구 : <input type="text" name="lineNum1" value="<%= @contacts_line.line_num1 %>"><br>
+    2번 우측 문구 : <input type="text" name-"lineNum2" value="<%= @contacts_line.line_num2 %>"><br>
+    주소 : <input type="text" name-"lineNum3" value="<%= @contacts_line.line_num3 %>"><br>
+    세부 주소 : <input type="text" name-"lineNum4" value="<%= @contacts_line.line_num4 %>"><br>
+    
+    <% @contacts_sns.each do |t| %>
+    sns link <%= t.id %> : <input type="text" name="snsLink<%= t.id %>" value="<%= t.sns_link %>">
+    class <%= t.id %> : <input type="text" name="snsClass<%= t.id %>" value="<%= t.sns_class %>"><br>
+    <% end %>
+    
+    
