@@ -214,7 +214,9 @@ class AdminController < ApplicationController
             o.name = params["memberName#{o.id}"]
             o.major = params["memberMajor#{o.id}"]
             o.saying = params["memberSaying#{o.id}"]
-            o.img_url = ot_image
+            if ot_image != nil
+                o.img_url = ot_image
+            end
             o.save
         end
         redirect_to "/admin/index1"

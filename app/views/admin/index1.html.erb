@@ -382,7 +382,6 @@
 		<!--인터뷰-->
 		<section id="our-team">
 			<div class="container">
-				<form action="/admin/team_updt" method="post" enctype="multipart/form-data">>
 				<div class="row text-center">
 					<div class="col-sm-8 col-sm-offset-2">
 						<h2 class="title-one">
@@ -398,6 +397,7 @@
 					<a class="member-right" href="#team-carousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 					<div class="carousel-inner team-members">
 						
+						<form action="/admin/team_updt" method="post" enctype="multipart/form-data">
 						<div class="row item active">
 							<% @ourteams1.each do |t| %>
 							<div class="col-sm-6 col-md-3">
@@ -419,7 +419,10 @@
 							</div>
 							<% end %>
 						</div>
+						<button type="submit">1~4수정</button>
+						</form>
 						
+						<form action="/admin/team_updt" method="post" enctype="multipart/form-data">
 						<div class="row item">
 							<% @ourteams2.each do |t| %>
 							<div class="col-sm-6 col-md-3">
@@ -440,7 +443,10 @@
 							</div>
 							<% end %>
 						</div>
+						<button type="submit">5~8수정</button>
+						</form>
 
+						<form action="/admin/team_updt" method="post" enctype="multipart/form-data">
 						<div class="row item">
 							<% @ourteams3.each do |t| %>
 							<div class="col-sm-6 col-md-3">
@@ -461,10 +467,12 @@
 							</div>
 							<% end %>
 						</div>
+						<button type="submit">9~12수정</button>
+						</form>
 					</div>
 				</div>
-				<button type="submit">수정</button>
-				</form>
+				
+				
 			</div>
 		</section><!--/#Our-Team-->
 
