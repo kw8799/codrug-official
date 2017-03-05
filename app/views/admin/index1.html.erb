@@ -396,9 +396,9 @@
 					<a class="member-left" href="#team-carousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
 					<a class="member-right" href="#team-carousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 					<div class="carousel-inner team-members">
-						
-						<form action="/admin/team_updt" method="post" enctype="multipart/form-data">
+
 						<div class="row item active">
+						<form action="/admin/team_updt" method="post" enctype="multipart/form-data">
 							<% @ourteams1.each do |t| %>
 							<div class="col-sm-6 col-md-3">
 								<div class="single-member">
@@ -418,12 +418,12 @@
 								</div>
 							</div>
 							<% end %>
-						</div>
 						<button type="submit">1~4수정</button>
 						</form>
+						</div>
 						
-						<form action="/admin/team_updt" method="post" enctype="multipart/form-data">
 						<div class="row item">
+						<form action="/admin/team_updt" method="post" enctype="multipart/form-data">
 							<% @ourteams2.each do |t| %>
 							<div class="col-sm-6 col-md-3">
 								<div class="single-member">
@@ -442,12 +442,12 @@
 								</div>
 							</div>
 							<% end %>
-						</div>
 						<button type="submit">5~8수정</button>
 						</form>
+						</div>
 
-						<form action="/admin/team_updt" method="post" enctype="multipart/form-data">
 						<div class="row item">
+							<form action="/admin/team_updt" method="post" enctype="multipart/form-data">
 							<% @ourteams3.each do |t| %>
 							<div class="col-sm-6 col-md-3">
 								<div class="single-member">
@@ -466,9 +466,9 @@
 								</div>
 							</div>
 							<% end %>
-						</div>
-						<button type="submit">9~12수정</button>
+							<button type="submit">9~12수정</button>
 						</form>
+						</div>
 					</div>
 				</div>
 				
