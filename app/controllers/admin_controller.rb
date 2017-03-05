@@ -203,22 +203,20 @@ class AdminController < ApplicationController
         t.section_content = params[:contentSec]
         t.save
         
-        u = Ourteam.all
-        u.each do |o|
-            o = Ourteam.find(o.id)
-            
-            uploader = T34Uploader.new
-            uploader.store!(params["faceImgUrl#{o.id}"])
-            ot_image = uploader.url
-            
-            o.name = params["memberName#{o.id}"]
-            o.major = params["memberMajor#{o.id}"]
-            o.saying = params["memberSaying#{o.id}"]
-            if ot_image != nil
-                o.img_url = ot_image
-            end
-            o.save
+        o = Ourteam.find(params[:ourteamId])
+        
+        uploader = T34Uploader.new
+        uploader.store!(params["faceImgUrl#{o.id}"])
+        ot_image = uploader.url
+        
+        o.name = params["memberName#{o.id}"]
+        o.major = params["memberMajor#{o.id}"]
+        o.saying = params["memberSaying#{o.id}"]
+        if ot_image != nil
+            o.img_url = ot_image
         end
+        o.save
+            
         redirect_to "/admin/index1"
     end
     

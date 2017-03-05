@@ -127,7 +127,7 @@
 						<% @aboutwe.each do |a| %>
 						<div class="tab-pane fade <%= a.interact_factor2 %> <%= a.interact_factor1 %>" id="<%= a.link_id %>">
 							<div class="media">
-								<img class="pull-left media-object" src="/assets/about-us/whatwedid.jpg" alt="<%= a.alt %>">
+								<img class="pull-left media-object" src="<%= a.sub_picture_url %>" alt="<%= a.alt %>">
 								<!--이미지 수정요-->
 								<div class="media-body">
 									<p><%= simple_format(a.sub_content) %></p>

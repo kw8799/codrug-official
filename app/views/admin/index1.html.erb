@@ -398,16 +398,18 @@
 					<div class="carousel-inner team-members">
 
 						<div class="row item active">
-						<form action="/admin/team_updt" method="post" enctype="multipart/form-data">
 							<% @ourteams1.each do |t| %>
+							<form action="/admin/team_updt" method="post" enctype="multipart/form-data">
 							<div class="col-sm-6 col-md-3">
 								<div class="single-member">
+									<input type="hidden" name="ourteamId" value="<%= t.id %>">
 									<img src="<%= t.img_url %>" alt="team member"/>
 									<input type="file" name="faceImgUrl<%= t.id %>" value="<%= t.img_url %>"><br>
 									프로필 이미지는 1:1비율 편집 후 올려주세요.
 									<h4><input type="text" name="memberName<%= t.id %>" style="text-align:center;" value="<%= t.name %>"></h4>
 									<h5><input type="text" name="memberMajor<%= t.id %>" style="text-align:center;" value="<%= t.major %>"></h5>
 									<p><textarea rows="3" cols="25" style="text-align:center;" name="memberSaying<%= t.id %>"><%= t.saying %></textarea></p>
+									<button type="submit">수정</button>
 									<div class="socials">
 										<i class="fa fa-facebook"></i><input type="text" name="sns1_<%= t.id %>" value="<%= t.sns_1 %>">
 										<i class="fa fa-twitter"></i><input type="text" name="sns2_<%= t.id %>" value="<%= t.sns_2 %>">
@@ -417,21 +419,22 @@
 									</div>
 								</div>
 							</div>
+							</form>
 							<% end %>
-						<button type="submit">1~4수정</button>
-						</form>
 						</div>
 						
 						<div class="row item">
-						<form action="/admin/team_updt" method="post" enctype="multipart/form-data">
 							<% @ourteams2.each do |t| %>
+							<form action="/admin/team_updt" method="post" enctype="multipart/form-data">
 							<div class="col-sm-6 col-md-3">
 								<div class="single-member">
+									<input type="hidden" name="ourteamId" value="<%= t.id %>">
 									<img src="<%= t.img_url %>" alt="team member"/>
 									<input type="file" name="faceImgUrl<%= t.id %>" value="<%= t.img_url %>"><br>
 									<h4><input type="text" name="memberName<%= t.id %>" style="text-align:center;" value="<%= t.name %>"></h4>
 									<h5><input type="text" name="memberMajor<%= t.id %>" style="text-align:center;" value="<%= t.major %>"></h5>
 									<p><textarea rows="3" cols="25" style="text-align:center;" name="memberSaying<%= t.id %>"><%= t.saying %></textarea></p>
+									<button type="submit">수정</button>
 									<div class="socials">
 										<i class="fa fa-facebook"></i><input type="text" name="sns1_<%= t.id %>" value="<%= t.sns_1 %>">
 										<i class="fa fa-twitter"></i><input type="text" name="sns2_<%= t.id %>" value="<%= t.sns_2 %>">
@@ -441,21 +444,24 @@
 									</div>
 								</div>
 							</div>
+							</form>
 							<% end %>
-						<button type="submit">5~8수정</button>
-						</form>
+						
+						
 						</div>
 
 						<div class="row item">
-							<form action="/admin/team_updt" method="post" enctype="multipart/form-data">
 							<% @ourteams3.each do |t| %>
+							<form action="/admin/team_updt" method="post" enctype="multipart/form-data">
 							<div class="col-sm-6 col-md-3">
 								<div class="single-member">
+									<input type="hidden" name="ourteamId" value="<%= t.id %>">
 									<img src="<%= t.img_url %>" alt="team member"/>
 									<input type="file" name="faceImgUrl<%= t.id %>" value="<%= t.img_url %>"><br>
 									<h4><input type="text" name="memberName<%= t.id %>" style="text-align:center;" value="<%= t.name %>"></h4>
 									<h5><input type="text" name="memberMajor<%= t.id %>" style="text-align:center;" value="<%= t.major %>"></h5>
 									<p><textarea rows="3" cols="25" style="text-align:center;" name="memberSaying<%= t.id %>"><%= t.saying %></textarea></p>
+									<button type="submit">수정</button>
 									<div class="socials">
 										<i class="fa fa-facebook"></i><input type="text" name="sns1_<%= t.id %>" value="<%= t.sns_1 %>">
 										<i class="fa fa-twitter"></i><input type="text" name="sns2_<%= t.id %>" value="<%= t.sns_2 %>">
@@ -465,9 +471,8 @@
 									</div>
 								</div>
 							</div>
+							</form>
 							<% end %>
-							<button type="submit">9~12수정</button>
-						</form>
 						</div>
 					</div>
 				</div>
