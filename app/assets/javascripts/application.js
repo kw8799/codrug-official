@@ -17,8 +17,8 @@
 
 // '/admin/codrug' 페이지의 페이크퀴즈 시작
 function myQuestion(){
-        var answer = prompt("이 홈피의 제작자가 누굴까?");
-        if (answer == "곽규원") {
+        var answer = prompt("코드러그는 몇 년에 만들어졌을까?");
+        if (answer == "2014년") {
             alert("정답! 자네 인재로군.")
             var change = document.getElementById("quiz");
             change.setAttribute("disabled","");
